@@ -1,0 +1,64 @@
+{
+  "name": "MCPMicoupImagePicker",
+  "version": "0.1.0",
+  "summary": "A short description of react-native-micoup-image-picker.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/kimkr/react-native-micoup-image-picker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kimkr": "dev.kimkr@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/kimkr/react-native-micoup-image-picker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "react-native-micoup-image-picker/Classes/**/*.{h,m}",
+  "resource_bundles": {
+    "react-native-micoup-image-picker": [
+      "react-native-micoup-image-picker/Assets/*.{png}",
+      "react-native-micoup-image-picker/Assets/*.{storyboard}"
+    ]
+  },
+  "frameworks": "UIKit",
+  "dependencies": {
+    "React": [
+
+    ],
+    "NYXImagesKit": [
+
+    ],
+    "SDWebImage": [
+
+    ],
+    "AFNetworking": [
+
+    ],
+    "POSInputStreamLibrary": [
+
+    ],
+    "MRProgress": [
+
+    ],
+    "UIAlertController+Blocks": [
+
+    ],
+    "UIColor+Hex": [
+
+    ],
+    "Toast": [
+
+    ],
+    "NSString-UrlEncode": [
+
+    ],
+    "UIButton+BackgroundColor": [
+
+    ]
+  }
+}

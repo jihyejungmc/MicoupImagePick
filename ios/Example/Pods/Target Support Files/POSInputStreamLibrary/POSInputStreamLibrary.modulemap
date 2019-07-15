@@ -1,0 +1,6 @@
+framework module POSInputStreamLibrary {
+  umbrella header "POSInputStreamLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}
