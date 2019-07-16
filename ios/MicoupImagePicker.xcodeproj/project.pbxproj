@@ -1,0 +1,502 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51E5F49B22DE121800AD4CE0 /* MCPMicoupImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F49922DE121800AD4CE0 /* MCPMicoupImagePicker.m */; };
+		51E5F4E322DE13A700AD4CE0 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4A522DE13A700AD4CE0 /* Utility.m */; };
+		51E5F4E422DE13A700AD4CE0 /* ScreenUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4A722DE13A700AD4CE0 /* ScreenUtil.m */; };
+		51E5F4E522DE13A700AD4CE0 /* HTTPAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4AB22DE13A700AD4CE0 /* HTTPAPICommunicator.m */; };
+		51E5F4E622DE13A700AD4CE0 /* AlbumGroupListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4AD22DE13A700AD4CE0 /* AlbumGroupListTableViewCell.m */; };
+		51E5F4E722DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4AE22DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.m */; };
+		51E5F4E822DE13A700AD4CE0 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4AF22DE13A700AD4CE0 /* PhotoCollectionViewCell.m */; };
+		51E5F4E922DE13A700AD4CE0 /* MCPResultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4B422DE13A700AD4CE0 /* MCPResultInfo.m */; };
+		51E5F4EA22DE13A700AD4CE0 /* MCPLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4B722DE13A700AD4CE0 /* MCPLoginInfo.m */; };
+		51E5F4EB22DE13A700AD4CE0 /* MCPModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4B922DE13A700AD4CE0 /* MCPModelBase.m */; };
+		51E5F4EC22DE13A700AD4CE0 /* MCPImageUploadResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4BB22DE13A700AD4CE0 /* MCPImageUploadResult.m */; };
+		51E5F4ED22DE13A700AD4CE0 /* MCPImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4BC22DE13A700AD4CE0 /* MCPImageInfo.m */; };
+		51E5F4EE22DE13A700AD4CE0 /* MCPRemoteImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4BE22DE13A700AD4CE0 /* MCPRemoteImageInfo.m */; };
+		51E5F4EF22DE13A700AD4CE0 /* MCPPhotoEditInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4BF22DE13A700AD4CE0 /* MCPPhotoEditInfo.m */; };
+		51E5F4F022DE13A700AD4CE0 /* MCPListResultInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4C222DE13A700AD4CE0 /* MCPListResultInfo.m */; };
+		51E5F4F122DE13A700AD4CE0 /* MCPUploadFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4C322DE13A700AD4CE0 /* MCPUploadFileInfo.m */; };
+		51E5F4F222DE13A700AD4CE0 /* UIImage+ExifMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4C722DE13A700AD4CE0 /* UIImage+ExifMetaData.m */; };
+		51E5F4F322DE13A700AD4CE0 /* UIViewController+ToastMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4C822DE13A700AD4CE0 /* UIViewController+ToastMessage.m */; };
+		51E5F4F422DE13A700AD4CE0 /* NSDictionary+SafeParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4CB22DE13A700AD4CE0 /* NSDictionary+SafeParseData.m */; };
+		51E5F4F522DE13A700AD4CE0 /* NSNumber+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4CD22DE13A700AD4CE0 /* NSNumber+Formatter.m */; };
+		51E5F4F622DE13A700AD4CE0 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D022DE13A700AD4CE0 /* UIImage+FixOrientation.m */; };
+		51E5F4F722DE13A700AD4CE0 /* MCPPhotoEditResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D222DE13A700AD4CE0 /* MCPPhotoEditResultViewController.m */; };
+		51E5F4F822DE13A700AD4CE0 /* MCPPhotoGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D522DE13A700AD4CE0 /* MCPPhotoGroupViewController.m */; };
+		51E5F4F922DE13A700AD4CE0 /* MCPPhotoSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D622DE13A700AD4CE0 /* MCPPhotoSelectViewController.m */; };
+		51E5F4FA22DE13A700AD4CE0 /* MCPBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D822DE13A700AD4CE0 /* MCPBaseViewController.m */; };
+		51E5F4FB22DE13A700AD4CE0 /* MCPPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4D922DE13A700AD4CE0 /* MCPPhotoEditViewController.m */; };
+		51E5F4FC22DE13A700AD4CE0 /* BFCropInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4DE22DE13A700AD4CE0 /* BFCropInterface.m */; };
+		51E5F4FD22DE13A700AD4CE0 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F4E222DE13A700AD4CE0 /* DateHelper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B511D91A9E6C8500147676 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		134814201AA4EA6300B7C361 /* libMicoupImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMicoupImagePicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E5F49922DE121800AD4CE0 /* MCPMicoupImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCPMicoupImagePicker.m; path = MicoupImagePicker/MCPMicoupImagePicker.m; sourceTree = "<group>"; };
+		51E5F49A22DE121800AD4CE0 /* MCPMicoupImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCPMicoupImagePicker.h; path = MicoupImagePicker/MCPMicoupImagePicker.h; sourceTree = "<group>"; };
+		51E5F4A522DE13A700AD4CE0 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		51E5F4A622DE13A700AD4CE0 /* ScreenUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenUtil.h; sourceTree = "<group>"; };
+		51E5F4A722DE13A700AD4CE0 /* ScreenUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenUtil.m; sourceTree = "<group>"; };
+		51E5F4A822DE13A700AD4CE0 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		51E5F4AA22DE13A700AD4CE0 /* HTTPAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAPICommunicator.h; sourceTree = "<group>"; };
+		51E5F4AB22DE13A700AD4CE0 /* HTTPAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPAPICommunicator.m; sourceTree = "<group>"; };
+		51E5F4AD22DE13A700AD4CE0 /* AlbumGroupListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumGroupListTableViewCell.m; sourceTree = "<group>"; };
+		51E5F4AE22DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoEditCollectionViewCell.m; sourceTree = "<group>"; };
+		51E5F4AF22DE13A700AD4CE0 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		51E5F4B022DE13A700AD4CE0 /* AlbumGroupListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumGroupListTableViewCell.h; sourceTree = "<group>"; };
+		51E5F4B122DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoEditCollectionViewCell.h; sourceTree = "<group>"; };
+		51E5F4B222DE13A700AD4CE0 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		51E5F4B422DE13A700AD4CE0 /* MCPResultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPResultInfo.m; sourceTree = "<group>"; };
+		51E5F4B522DE13A700AD4CE0 /* MCPPhotoEditInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoEditInfo.h; sourceTree = "<group>"; };
+		51E5F4B622DE13A700AD4CE0 /* MCPRemoteImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPRemoteImageInfo.h; sourceTree = "<group>"; };
+		51E5F4B722DE13A700AD4CE0 /* MCPLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPLoginInfo.m; sourceTree = "<group>"; };
+		51E5F4B822DE13A700AD4CE0 /* MCPUploadFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPUploadFileInfo.h; sourceTree = "<group>"; };
+		51E5F4B922DE13A700AD4CE0 /* MCPModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPModelBase.m; sourceTree = "<group>"; };
+		51E5F4BA22DE13A700AD4CE0 /* MCPListResultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPListResultInfo.h; sourceTree = "<group>"; };
+		51E5F4BB22DE13A700AD4CE0 /* MCPImageUploadResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPImageUploadResult.m; sourceTree = "<group>"; };
+		51E5F4BC22DE13A700AD4CE0 /* MCPImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPImageInfo.m; sourceTree = "<group>"; };
+		51E5F4BD22DE13A700AD4CE0 /* MCPLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPLoginInfo.h; sourceTree = "<group>"; };
+		51E5F4BE22DE13A700AD4CE0 /* MCPRemoteImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPRemoteImageInfo.m; sourceTree = "<group>"; };
+		51E5F4BF22DE13A700AD4CE0 /* MCPPhotoEditInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoEditInfo.m; sourceTree = "<group>"; };
+		51E5F4C022DE13A700AD4CE0 /* MCPResultInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPResultInfo.h; sourceTree = "<group>"; };
+		51E5F4C122DE13A700AD4CE0 /* MCPModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPModelBase.h; sourceTree = "<group>"; };
+		51E5F4C222DE13A700AD4CE0 /* MCPListResultInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPListResultInfo.m; sourceTree = "<group>"; };
+		51E5F4C322DE13A700AD4CE0 /* MCPUploadFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPUploadFileInfo.m; sourceTree = "<group>"; };
+		51E5F4C422DE13A700AD4CE0 /* MCPImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPImageInfo.h; sourceTree = "<group>"; };
+		51E5F4C522DE13A700AD4CE0 /* MCPImageUploadResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPImageUploadResult.h; sourceTree = "<group>"; };
+		51E5F4C722DE13A700AD4CE0 /* UIImage+ExifMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ExifMetaData.m"; sourceTree = "<group>"; };
+		51E5F4C822DE13A700AD4CE0 /* UIViewController+ToastMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ToastMessage.m"; sourceTree = "<group>"; };
+		51E5F4C922DE13A700AD4CE0 /* NSNumber+Formatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Formatter.h"; sourceTree = "<group>"; };
+		51E5F4CA22DE13A700AD4CE0 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		51E5F4CB22DE13A700AD4CE0 /* NSDictionary+SafeParseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeParseData.m"; sourceTree = "<group>"; };
+		51E5F4CC22DE13A700AD4CE0 /* UIImage+ExifMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ExifMetaData.h"; sourceTree = "<group>"; };
+		51E5F4CD22DE13A700AD4CE0 /* NSNumber+Formatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Formatter.m"; sourceTree = "<group>"; };
+		51E5F4CE22DE13A700AD4CE0 /* UIViewController+ToastMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ToastMessage.h"; sourceTree = "<group>"; };
+		51E5F4CF22DE13A700AD4CE0 /* NSDictionary+SafeParseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeParseData.h"; sourceTree = "<group>"; };
+		51E5F4D022DE13A700AD4CE0 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		51E5F4D222DE13A700AD4CE0 /* MCPPhotoEditResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoEditResultViewController.m; sourceTree = "<group>"; };
+		51E5F4D322DE13A700AD4CE0 /* MCPBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPBaseViewController.h; sourceTree = "<group>"; };
+		51E5F4D422DE13A700AD4CE0 /* MCPPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoEditViewController.h; sourceTree = "<group>"; };
+		51E5F4D522DE13A700AD4CE0 /* MCPPhotoGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoGroupViewController.m; sourceTree = "<group>"; };
+		51E5F4D622DE13A700AD4CE0 /* MCPPhotoSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoSelectViewController.m; sourceTree = "<group>"; };
+		51E5F4D722DE13A700AD4CE0 /* MCPPhotoEditResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoEditResultViewController.h; sourceTree = "<group>"; };
+		51E5F4D822DE13A700AD4CE0 /* MCPBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPBaseViewController.m; sourceTree = "<group>"; };
+		51E5F4D922DE13A700AD4CE0 /* MCPPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPPhotoEditViewController.m; sourceTree = "<group>"; };
+		51E5F4DA22DE13A700AD4CE0 /* MCPPhotoSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoSelectViewController.h; sourceTree = "<group>"; };
+		51E5F4DB22DE13A700AD4CE0 /* MCPPhotoGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPPhotoGroupViewController.h; sourceTree = "<group>"; };
+		51E5F4DE22DE13A700AD4CE0 /* BFCropInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFCropInterface.m; sourceTree = "<group>"; };
+		51E5F4DF22DE13A700AD4CE0 /* BFCropInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFCropInterface.h; sourceTree = "<group>"; };
+		51E5F4E122DE13A700AD4CE0 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		51E5F4E222DE13A700AD4CE0 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				134814201AA4EA6300B7C361 /* libMicoupImagePicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51E5F4A422DE13A700AD4CE0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4A622DE13A700AD4CE0 /* ScreenUtil.h */,
+				51E5F4A722DE13A700AD4CE0 /* ScreenUtil.m */,
+				51E5F4A822DE13A700AD4CE0 /* Utility.h */,
+				51E5F4A522DE13A700AD4CE0 /* Utility.m */,
+			);
+			name = Shared;
+			path = MicoupImagePicker/Shared;
+			sourceTree = "<group>";
+		};
+		51E5F4A922DE13A700AD4CE0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4AA22DE13A700AD4CE0 /* HTTPAPICommunicator.h */,
+				51E5F4AB22DE13A700AD4CE0 /* HTTPAPICommunicator.m */,
+			);
+			name = Network;
+			path = MicoupImagePicker/Network;
+			sourceTree = "<group>";
+		};
+		51E5F4AC22DE13A700AD4CE0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4B022DE13A700AD4CE0 /* AlbumGroupListTableViewCell.h */,
+				51E5F4AD22DE13A700AD4CE0 /* AlbumGroupListTableViewCell.m */,
+				51E5F4B122DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.h */,
+				51E5F4AE22DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.m */,
+				51E5F4B222DE13A700AD4CE0 /* PhotoCollectionViewCell.h */,
+				51E5F4AF22DE13A700AD4CE0 /* PhotoCollectionViewCell.m */,
+			);
+			name = Cell;
+			path = MicoupImagePicker/Cell;
+			sourceTree = "<group>";
+		};
+		51E5F4B322DE13A700AD4CE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4C422DE13A700AD4CE0 /* MCPImageInfo.h */,
+				51E5F4BC22DE13A700AD4CE0 /* MCPImageInfo.m */,
+				51E5F4C522DE13A700AD4CE0 /* MCPImageUploadResult.h */,
+				51E5F4BB22DE13A700AD4CE0 /* MCPImageUploadResult.m */,
+				51E5F4BA22DE13A700AD4CE0 /* MCPListResultInfo.h */,
+				51E5F4C222DE13A700AD4CE0 /* MCPListResultInfo.m */,
+				51E5F4BD22DE13A700AD4CE0 /* MCPLoginInfo.h */,
+				51E5F4B722DE13A700AD4CE0 /* MCPLoginInfo.m */,
+				51E5F4C122DE13A700AD4CE0 /* MCPModelBase.h */,
+				51E5F4B922DE13A700AD4CE0 /* MCPModelBase.m */,
+				51E5F4B522DE13A700AD4CE0 /* MCPPhotoEditInfo.h */,
+				51E5F4BF22DE13A700AD4CE0 /* MCPPhotoEditInfo.m */,
+				51E5F4B622DE13A700AD4CE0 /* MCPRemoteImageInfo.h */,
+				51E5F4BE22DE13A700AD4CE0 /* MCPRemoteImageInfo.m */,
+				51E5F4C022DE13A700AD4CE0 /* MCPResultInfo.h */,
+				51E5F4B422DE13A700AD4CE0 /* MCPResultInfo.m */,
+				51E5F4B822DE13A700AD4CE0 /* MCPUploadFileInfo.h */,
+				51E5F4C322DE13A700AD4CE0 /* MCPUploadFileInfo.m */,
+			);
+			name = Model;
+			path = MicoupImagePicker/Model;
+			sourceTree = "<group>";
+		};
+		51E5F4C622DE13A700AD4CE0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4CF22DE13A700AD4CE0 /* NSDictionary+SafeParseData.h */,
+				51E5F4CB22DE13A700AD4CE0 /* NSDictionary+SafeParseData.m */,
+				51E5F4C922DE13A700AD4CE0 /* NSNumber+Formatter.h */,
+				51E5F4CD22DE13A700AD4CE0 /* NSNumber+Formatter.m */,
+				51E5F4CC22DE13A700AD4CE0 /* UIImage+ExifMetaData.h */,
+				51E5F4C722DE13A700AD4CE0 /* UIImage+ExifMetaData.m */,
+				51E5F4CA22DE13A700AD4CE0 /* UIImage+FixOrientation.h */,
+				51E5F4D022DE13A700AD4CE0 /* UIImage+FixOrientation.m */,
+				51E5F4CE22DE13A700AD4CE0 /* UIViewController+ToastMessage.h */,
+				51E5F4C822DE13A700AD4CE0 /* UIViewController+ToastMessage.m */,
+			);
+			name = Category;
+			path = MicoupImagePicker/Category;
+			sourceTree = "<group>";
+		};
+		51E5F4D122DE13A700AD4CE0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4D322DE13A700AD4CE0 /* MCPBaseViewController.h */,
+				51E5F4D822DE13A700AD4CE0 /* MCPBaseViewController.m */,
+				51E5F4D722DE13A700AD4CE0 /* MCPPhotoEditResultViewController.h */,
+				51E5F4D222DE13A700AD4CE0 /* MCPPhotoEditResultViewController.m */,
+				51E5F4D422DE13A700AD4CE0 /* MCPPhotoEditViewController.h */,
+				51E5F4D922DE13A700AD4CE0 /* MCPPhotoEditViewController.m */,
+				51E5F4DB22DE13A700AD4CE0 /* MCPPhotoGroupViewController.h */,
+				51E5F4D522DE13A700AD4CE0 /* MCPPhotoGroupViewController.m */,
+				51E5F4DA22DE13A700AD4CE0 /* MCPPhotoSelectViewController.h */,
+				51E5F4D622DE13A700AD4CE0 /* MCPPhotoSelectViewController.m */,
+			);
+			name = ViewController;
+			path = MicoupImagePicker/ViewController;
+			sourceTree = "<group>";
+		};
+		51E5F4DC22DE13A700AD4CE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4DD22DE13A700AD4CE0 /* BFCropInterface */,
+			);
+			name = Frameworks;
+			path = MicoupImagePicker/Frameworks;
+			sourceTree = "<group>";
+		};
+		51E5F4DD22DE13A700AD4CE0 /* BFCropInterface */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4DF22DE13A700AD4CE0 /* BFCropInterface.h */,
+				51E5F4DE22DE13A700AD4CE0 /* BFCropInterface.m */,
+			);
+			path = BFCropInterface;
+			sourceTree = "<group>";
+		};
+		51E5F4E022DE13A700AD4CE0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F4E122DE13A700AD4CE0 /* DateHelper.h */,
+				51E5F4E222DE13A700AD4CE0 /* DateHelper.m */,
+			);
+			name = Helper;
+			path = MicoupImagePicker/Helper;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				51E5F4C622DE13A700AD4CE0 /* Category */,
+				51E5F4AC22DE13A700AD4CE0 /* Cell */,
+				51E5F4DC22DE13A700AD4CE0 /* Frameworks */,
+				51E5F4E022DE13A700AD4CE0 /* Helper */,
+				51E5F4B322DE13A700AD4CE0 /* Model */,
+				51E5F4A922DE13A700AD4CE0 /* Network */,
+				51E5F4A422DE13A700AD4CE0 /* Shared */,
+				51E5F4D122DE13A700AD4CE0 /* ViewController */,
+				51E5F49A22DE121800AD4CE0 /* MCPMicoupImagePicker.h */,
+				51E5F49922DE121800AD4CE0 /* MCPMicoupImagePicker.m */,
+				134814211AA4EA7D00B7C361 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B511DA1A9E6C8500147676 /* MicoupImagePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "MicoupImagePicker" */;
+			buildPhases = (
+				58B511D71A9E6C8500147676 /* Sources */,
+				58B511D81A9E6C8500147676 /* Frameworks */,
+				58B511D91A9E6C8500147676 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MicoupImagePicker;
+			productName = RCTDataManager;
+			productReference = 134814201AA4EA6300B7C361 /* libMicoupImagePicker.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					58B511DA1A9E6C8500147676 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "MicoupImagePicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B511DA1A9E6C8500147676 /* MicoupImagePicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B511D71A9E6C8500147676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E5F4EA22DE13A700AD4CE0 /* MCPLoginInfo.m in Sources */,
+				51E5F4EB22DE13A700AD4CE0 /* MCPModelBase.m in Sources */,
+				51E5F4F922DE13A700AD4CE0 /* MCPPhotoSelectViewController.m in Sources */,
+				51E5F4E822DE13A700AD4CE0 /* PhotoCollectionViewCell.m in Sources */,
+				51E5F4F722DE13A700AD4CE0 /* MCPPhotoEditResultViewController.m in Sources */,
+				51E5F4E722DE13A700AD4CE0 /* MCPPhotoEditCollectionViewCell.m in Sources */,
+				51E5F4E322DE13A700AD4CE0 /* Utility.m in Sources */,
+				51E5F4F022DE13A700AD4CE0 /* MCPListResultInfo.m in Sources */,
+				51E5F4FC22DE13A700AD4CE0 /* BFCropInterface.m in Sources */,
+				51E5F4F322DE13A700AD4CE0 /* UIViewController+ToastMessage.m in Sources */,
+				51E5F4FA22DE13A700AD4CE0 /* MCPBaseViewController.m in Sources */,
+				51E5F4E622DE13A700AD4CE0 /* AlbumGroupListTableViewCell.m in Sources */,
+				51E5F4F522DE13A700AD4CE0 /* NSNumber+Formatter.m in Sources */,
+				51E5F49B22DE121800AD4CE0 /* MCPMicoupImagePicker.m in Sources */,
+				51E5F4F622DE13A700AD4CE0 /* UIImage+FixOrientation.m in Sources */,
+				51E5F4EE22DE13A700AD4CE0 /* MCPRemoteImageInfo.m in Sources */,
+				51E5F4E922DE13A700AD4CE0 /* MCPResultInfo.m in Sources */,
+				51E5F4F822DE13A700AD4CE0 /* MCPPhotoGroupViewController.m in Sources */,
+				51E5F4ED22DE13A700AD4CE0 /* MCPImageInfo.m in Sources */,
+				51E5F4E422DE13A700AD4CE0 /* ScreenUtil.m in Sources */,
+				51E5F4EC22DE13A700AD4CE0 /* MCPImageUploadResult.m in Sources */,
+				51E5F4E522DE13A700AD4CE0 /* HTTPAPICommunicator.m in Sources */,
+				51E5F4EF22DE13A700AD4CE0 /* MCPPhotoEditInfo.m in Sources */,
+				51E5F4FB22DE13A700AD4CE0 /* MCPPhotoEditViewController.m in Sources */,
+				51E5F4F222DE13A700AD4CE0 /* UIImage+ExifMetaData.m in Sources */,
+				51E5F4FD22DE13A700AD4CE0 /* DateHelper.m in Sources */,
+				51E5F4F422DE13A700AD4CE0 /* NSDictionary+SafeParseData.m in Sources */,
+				51E5F4F122DE13A700AD4CE0 /* MCPUploadFileInfo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B511F01A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MicoupImagePicker;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MicoupImagePicker;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "MicoupImagePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "MicoupImagePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511F01A9E6C8500147676 /* Debug */,
+				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}

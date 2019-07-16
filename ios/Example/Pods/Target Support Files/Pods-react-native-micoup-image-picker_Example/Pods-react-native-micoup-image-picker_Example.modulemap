@@ -1,6 +1,0 @@
-framework module Pods_react_native_micoup_image_picker_Example {
-  umbrella header "Pods-react-native-micoup-image-picker_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}
