@@ -1,5 +1,6 @@
 
 #import "MCPMicoupImagePicker.h"
+#import <React/RCTLog.h>
 
 #import "HTTPAPICommunicator.h"
 #import "NSDictionary+MCPSafeConvert.h"
@@ -11,12 +12,29 @@
 
 @end
 
+- (instancetype)init {
+    self = [super init];
+    return self;
+}
+
 @implementation MCPMicoupImagePicker
 
-- (dispatch_queue_t)methodQueue {
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
+- (dispatch_queue_t)methodQueue
+{
     return dispatch_get_main_queue();
 }
+
 RCT_EXPORT_MODULE()
+
+RCT_EXPORT_METHOD(log:(NSString *)text)
+{
+  RCTLogInfo(@"FROM MCPMicoupImagePicker %@", text);
+}
 
 RCT_REMAP_METHOD(showImagePickerWithOptions,
                  options:(NSDictionary *)options
