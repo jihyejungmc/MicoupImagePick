@@ -3,6 +3,8 @@
 #import <React/RCTLog.h>
 
 #import "HTTPAPICommunicator.h"
+#import "MCPPhotoGroupViewController.h"
+#import "MCPPhotoEditViewController.h"
 #import "NSDictionary+MCPSafeConvert.h"
 
 @interface MCPMicoupImagePicker ()
@@ -34,10 +36,9 @@ RCT_EXPORT_METHOD(log:(NSString *)text) {
   RCTLogInfo(@"FROM MCPMicoupImagePicker %@", text);
 }
 
-RCT_REMAP_METHOD(showImagePickerWithOptions,
-                 options:(NSDictionary *)options
-                 showImagePickerWithOptionsWithResolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(showImagePickerWithOptions:(NSDictionary *)options
+                              resolveHandler:(RCTPromiseResolveBlock)resolve
+                               rejectHandler:(RCTPromiseRejectBlock)reject) {
     self.showImagePickerResolveHandler = resolve;
     self.showImagePickerRejectHandler = reject;
     [self showImagePicker:options];
