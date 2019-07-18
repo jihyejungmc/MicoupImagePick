@@ -1,6 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
 
-const { RNMicoupImagePicker } = NativeModules;
+const { RNMicoupImagePicker, MCPMicoupImagePicker } = NativeModules;
 
 const defaultOptions = {
   documentNo: -1,
@@ -11,12 +11,14 @@ const defaultOptions = {
   enableCamera: true
 };
 
+const ImagePicker = Platform.OS === 'ios' ? MCPMicoupImagePicker : RNMicoupImagePicker
+
 export default {
-  showImagePickerWithOptions(optionArgs) {
+  showImagePickerWithOptions: function (optionArgs) {
     const options = {
       ...defaultOptions,
       ...optionArgs,
     };
-    return RNMicoupImagePicker.showImagePickerWithOptions(options);
+    return ImagePicker.showImagePickerWithOptions(options);
   }
 };
