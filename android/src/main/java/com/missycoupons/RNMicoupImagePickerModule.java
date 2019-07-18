@@ -52,14 +52,12 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showImagePickerWithOptions(ReadableMap options, Callback callback) {
+    public void showImagePickerWithOptions(ReadableMap options,  Promise promise) {
         this.cameraOptions = options;
-        this.mPickerPromise = null;
-        this.mPickerCallback = callback;
+        this.mPickerPromise = promise;
+        this.mPickerCallback = null;
         this.openImagePicker();
     }
-
-
 
     private void openImagePicker() {
         int imageCount = this.cameraOptions.getInt("imageCount");
