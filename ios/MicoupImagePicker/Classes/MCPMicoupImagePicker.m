@@ -40,11 +40,11 @@ RCT_REMAP_METHOD(showImagePickerWithOptions,
     }
 
     NSInteger documentNo = [options mcp_integerForKey:@"documentNo"];
-    viewController.documentNo = documentNo;
+    viewController.documentNo = [NSString stringWithFormat: @"%ld", (long)documentNo];
 
     NSInteger maxCount = [options mcp_integerForKey:@"imageCount"];
     if (maxCount) {
-        viewController.maxCount = [maxCount integerValue];
+        viewController.maxCount = maxCount;
     }
 
     NSString *cookie = [options mcp_stringForKey:@"cookie"];
