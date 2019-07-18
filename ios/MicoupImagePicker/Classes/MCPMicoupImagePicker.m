@@ -2,7 +2,7 @@
 #import "MCPMicoupImagePicker.h"
 
 #import "HTTPAPICommunicator.h"
-
+#import "NSDictionary+MCPSafeConvert.h"
 
 @interface MCPMicoupImagePicker ()
 
@@ -20,46 +20,44 @@ RCT_EXPORT_MODULE()
 
 RCT_REMAP_METHOD(showImagePickerWithOptions,
                  options:(NSDictionary *)options
-                 showImagePickerResolver:(RCTPromiseResolveBlock)resolve
+                 showImagePickerWithOptionsResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
     self.showImagePickerResolveHandler = resolve;
     self.showImagePickerRejectHandler = reject;
-    [self showImagePickerWithOptions:options];
+    [self showImagePicker:options];
 }
 
-- (void)showImagePickerWithOptions:(NSDictionary *)options {
+- (void)showImagePicker:(NSDictionary *)options  {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSURL *resourceBundleURL = [bundle URLForResource:@"Resources" withExtension:@"bundle"];
     NSBundle *resourceBundle = [NSBundle bundleWithURL:resourceBundleURL];
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Board" bundle:resourceBundle];
     MCPPhotoGroupViewController *viewController = [storyboad instantiateViewControllerWithIdentifier:@"PhotoGroupViewController"];
 
-    NSString *boardId = options[@"boardId"];
+    NSString *boardId = [options mcp_stringForKey:@"boardId"];
     if (boardId.length) {
         viewController.boardId = boardId;
     }
 
-    NSString *documentNo = options[@"documentNo"];
-    if (documentNo.length) {
-        viewController.documentNo = documentNo;
-    }
+    NSInteger documentNo = [options mcp_integerForKey:@"documentNo"];
+    viewController.documentNo = documentNo;
 
-    NSNumber *maxCount = options[@"maxCount"];
+    NSInteger maxCount = [options mcp_integerForKey:@"imageCount"];
     if (maxCount) {
         viewController.maxCount = [maxCount integerValue];
     }
 
-    NSString *cookie = options[@"cookie"];
+    NSString *cookie = [options mcp_stringForKey:@"cookie"];
     if (cookie) {
         [HTTPAPICommunicator sharedInstance].cookie = cookie;
     }
 
-    NSString *userAgent = options[@"userAgent"];
+    NSString *userAgent = [options mcp_stringForKey:@"userAgent"];
     if (userAgent) {
         [HTTPAPICommunicator sharedInstance].userAgent = userAgent;
     }
 
-    NSString *imageUploadURL = options[@"imageUploadURL"];
+    NSString *imageUploadURL = [options mcp_stringForKey:@"imageUploadURL"];
     if (imageUploadURL) {
         [HTTPAPICommunicator sharedInstance].imageUploadURL = imageUploadURL;
     }

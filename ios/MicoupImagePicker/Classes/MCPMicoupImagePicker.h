@@ -14,6 +14,6 @@
 
 @interface MCPMicoupImagePicker : NSObject <RCTBridgeModule>
 
-- (void)showImagePickerWithOptions:(NSDictionary *)options;
+- (void)showImagePicker:(NSDictionary *)options;
 
 @end
