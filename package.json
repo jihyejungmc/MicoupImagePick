@@ -1,7 +1,7 @@
 {
   "name": "react-native-micoup-image-picker",
   "version": "0.1.0",
-  "description": "MicoupImagePicker React Native module",
+  "description": "Image picker for MissyCoupons's mobile app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +10,8 @@
     "react-native"
   ],
   "author": "",
-  "license": ""
+  "license": "",
+  "peerDependencies": {
+    "react-native": ">=0.50.0"
+  }
 }
