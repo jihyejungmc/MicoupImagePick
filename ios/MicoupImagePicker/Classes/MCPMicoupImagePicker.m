@@ -5,7 +5,7 @@
 #import "HTTPAPICommunicator.h"
 #import "MCPPhotoGroupViewController.h"
 #import "MCPPhotoEditViewController.h"
-#import "NSDictionary+MCPSafeConvert.h"
+
 
 @interface MCPMicoupImagePicker ()
 
