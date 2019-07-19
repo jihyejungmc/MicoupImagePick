@@ -51,30 +51,33 @@ RCT_EXPORT_METHOD(showImagePickerWithOptions:(NSDictionary *)options
     UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Board" bundle:resourceBundle];
     MCPPhotoGroupViewController *viewController = [storyboad instantiateViewControllerWithIdentifier:@"PhotoGroupViewController"];
 
-    NSString *boardId = [options mcp_stringForKey:@"boardId"];
+
+    NSString *boardId = options[@"boardId"];
     if (boardId.length) {
         viewController.boardId = boardId;
     }
 
-    NSInteger documentNo = [options mcp_integerForKey:@"documentNo"];
-    viewController.documentNo = [NSString stringWithFormat: @"%ld", (long)documentNo];
-
-    NSInteger maxCount = [options mcp_integerForKey:@"imageCount"];
-    if (maxCount) {
-        viewController.maxCount = maxCount;
+    NSString *documentNo = options[@"documentNo"];
+    if (documentNo.length) {
+        viewController.documentNo = documentNo;
     }
 
-    NSString *cookie = [options mcp_stringForKey:@"cookie"];
+    NSNumber *maxCount = options[@"imageCount"];
+    if (maxCount) {
+        viewController.maxCount = [maxCount integerValue];
+    }
+
+    NSString *cookie = options[@"cookie"];
     if (cookie) {
         [HTTPAPICommunicator sharedInstance].cookie = cookie;
     }
 
-    NSString *userAgent = [options mcp_stringForKey:@"userAgent"];
+    NSString *userAgent = options[@"userAgent"];
     if (userAgent) {
         [HTTPAPICommunicator sharedInstance].userAgent = userAgent;
     }
 
-    NSString *imageUploadURL = [options mcp_stringForKey:@"imageUploadURL"];
+    NSString *imageUploadURL = options[@"imageUploadURL"];
     if (imageUploadURL) {
         [HTTPAPICommunicator sharedInstance].imageUploadURL = imageUploadURL;
     }
