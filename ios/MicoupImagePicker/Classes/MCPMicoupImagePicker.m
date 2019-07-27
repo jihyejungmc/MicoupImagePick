@@ -5,6 +5,7 @@
 #import "HTTPAPICommunicator.h"
 #import "MCPPhotoGroupViewController.h"
 #import "MCPPhotoEditViewController.h"
+#import "MCPImageUploadResult.h"
 
 
 @interface MCPMicoupImagePicker ()
@@ -93,11 +94,12 @@ RCT_EXPORT_METHOD(showImagePickerWithOptions:(NSDictionary *)options
 }
 
 - (void)imageUploadSuccessNotificationHandler:(NSNotification *)notification {
-    NSDictionary *result = notification.object;
-    NSLog(@"%@", result);
+    MCPImageUploadResult *result = notification.userInfo[@"result"];
+    NSDictionary *resultDic = [result dictionaryObject];
+    NSLog(@"%@", resultDic);
 
     if (self.showImagePickerResolveHandler) {
-        self.showImagePickerResolveHandler(result);
+        self.showImagePickerResolveHandler(resultDic);
     }
 
     self.showImagePickerResolveHandler = nil;

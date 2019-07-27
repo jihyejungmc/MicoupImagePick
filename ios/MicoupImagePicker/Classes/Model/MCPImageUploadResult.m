@@ -30,4 +30,24 @@
     return self;
 }
 
+- (NSMutableDictionary *)dictionaryObject {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    result[@"isSuccess"] = @(self.isSuccess);
+    result[@"result"] = @(self.result);
+    result[@"message"] = self.message;
+    result[@"successCount"] = self.successCount;
+    result[@"count"] = self.count;
+    
+    NSMutableArray *fileArray = [NSMutableArray array];
+    for (MCPRemoteImageInfo *imageInfo in self.fileArray) {
+        NSDictionary *item = [imageInfo dictionaryObject];
+        if (item) {
+            [fileArray addObject:item];
+        }
+    }
+    result[@"fileArray"] = [fileArray copy];
+    
+    return [result copy];
+}
+
 @end

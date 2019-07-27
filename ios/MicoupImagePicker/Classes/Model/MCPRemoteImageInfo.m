@@ -30,4 +30,27 @@
     return self;
 }
 
+- (NSMutableDictionary *)dictionaryObject {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    result[@"name"] = self.name;
+    result[@"isSuccess"] = @(self.isSuccess);
+    result[@"isImageLink"] = @(self.isImageLink);
+    result[@"message"] = self.message;
+    result[@"imageId"] = self.imageId;
+    result[@"serial"] = self.serial;
+    result[@"width"] = self.width;
+    result[@"height"] = self.height;
+    result[@"url"] = self.url;
+    result[@"isDefault"] = @(self.isDefault);
+    result[@"displayWidth"] = self.displayWidth;
+    result[@"displayHeight"] = self.displayHeight;
+    result[@"thumbnailUrl"] = self.thumbnailUrl;
+    result[@"thumbnailWidth"] = self.thumbnailWidth;
+    result[@"thumbnailHeight"] = self.thumbnailHeight;
+    result[@"isLoadFail"] = @(self.isLoadFail);
+    result[@"isCheckedUrl"] = @(self.isCheckedUrl);
+    
+    return [result copy];
+}
+
 @end
