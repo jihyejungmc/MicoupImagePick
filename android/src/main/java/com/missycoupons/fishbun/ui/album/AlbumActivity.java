@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -39,6 +40,7 @@ public class AlbumActivity extends AppCompatActivity {
     private AlbumController albumController;
     private ArrayList<Album> albumList = new ArrayList<>();
 
+    private ViewGroup rootView;
     private RecyclerView recyclerAlbumList;
     private RelativeLayout relAlbumEmpty;
 
@@ -100,6 +102,8 @@ public class AlbumActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        rootView = (ViewGroup) findViewById(R.id.coor_album_root);
+        rootView.setVisibility(View.VISIBLE);
         LinearLayout linearAlbumCamera = (LinearLayout) findViewById(R.id.lin_album_camera);
         linearAlbumCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,6 +249,7 @@ public class AlbumActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Define.ENTER_ALBUM_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
+                rootView.setVisibility(View.GONE);
                 setResult(RESULT_OK, data);
                 finish();
             } else if (resultCode == Define.TRANS_IMAGES_RESULT_CODE) {

@@ -1,5 +1,5 @@
 
-# react-native-micoup-image-picker
+# Micoup Image Picker 
 
 ## Getting started
 
@@ -50,4 +50,3 @@ import RNMicoupImagePicker from 'react-native-micoup-image-picker';
 // TODO: What to do with the module?
 RNMicoupImagePicker;
 ```
-  

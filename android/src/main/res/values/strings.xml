@@ -14,4 +14,10 @@
     <string name="alert_confirm">confirm</string>
     <string name="gif_exception">GIF image cannot be edited</string>
     <string name="crop_failed">Crop failed</string>
+    <string name="write_message_image_uploading">이미지 업로드 중</string>
+    <string name="write_message_upload_complete">이미지 업로드 완료!</string>
+    <string name="write_message_uploading_toast">이미지 업로드중입니다.</string>
+    <string name="write_message_not_logged_in">로그인 후 사용해 주세요.</string>
+    <string name="write_message_not_logged_in_modify">수정 권한이 없습니다.</string>
+    <string name="write_message_error_occur">글쓰기 중 오류가 발생했습니다. 다시 시도해주세요.</string>
 </resources>
