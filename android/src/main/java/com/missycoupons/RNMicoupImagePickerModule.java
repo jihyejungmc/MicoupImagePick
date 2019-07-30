@@ -4,10 +4,8 @@ package com.missycoupons;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
-import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -18,16 +16,14 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeArray;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.missycoupons.fishbun.FishBun;
 import com.missycoupons.fishbun.define.Define;
-import com.missycoupons.fishbun.ui.upload.UploadActivity;
 import com.missycoupons.fishbun.util.CameraUtil;
-import com.missycoupons.fishbun.util.SingleMediaScanner;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -41,11 +37,6 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
     private Callback mPickerCallback;
     private Promise mPickerPromise;
     private CameraUtil cameraUtil;
-
-    private String boardId;
-    private String postNo;
-    private String uploadUrl;
-    private String cookie;
 
     public RNMicoupImagePickerModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -68,16 +59,20 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
     }
 
     private void openImagePicker() {
-        this.boardId = this.cameraOptions.getString("boardId");
-        this.postNo = this.cameraOptions.getString("documentNo");
-        this.uploadUrl = this.cameraOptions.getString("imageUploadURL");
-        this.cookie = this.cameraOptions.getString("cookie");
+        String boardId = this.cameraOptions.getString("boardId");
+        String postNo = this.cameraOptions.getString("documentNo");
+        String uploadUrl = this.cameraOptions.getString("imageUploadURL");
+        String cookie = this.cameraOptions.getString("cookie");
         int imageCount = this.cameraOptions.getInt("imageCount");
         int spanCount = this.cameraOptions.getInt("spanCount");
         boolean enableCamera = this.cameraOptions.getBoolean("enableCamera");
         this.reactContext.addActivityEventListener(mActivityEventListener);
         Activity currentActivity = getCurrentActivity();
         FishBun.with(currentActivity)
+                .setBoardId(boardId)
+                .setPostNo(postNo)
+                .setUploadUrl(uploadUrl)
+                .setCookie(cookie)
                 .setPickerCount(imageCount)
                 .setPickerSpanCount(spanCount)
                 .setActionBarColor(Color.parseColor("#EFEFEF"), Color.parseColor("#000000"))
@@ -97,22 +92,17 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
         @Override
         public void onActivityResult(Activity activity, int requestCode, int resultCode, final Intent data) {
             if (requestCode == Define.ALBUM_REQUEST_CODE && resultCode == RESULT_OK) { // FishBun 으로부터 결과를 받아온 경우 ( Fishbun 선택 후 이미지 편집기로 편집한 경우도 포함 )
-                ArrayList<Uri> mPath = data.getParcelableArrayListExtra(Define.INTENT_PATH); // 선택된 이미지들 경로를 받아옴
-                if (mPath == null || mPath.size() == 0) return;
-                invokeSuccessWithResult(mPath);
-            }
-            if(requestCode == Define.UPLOAD_IMAGES_REQUEST_CODE && resultCode == RESULT_OK) {
-                ArrayList<String> uploadResult = data.getStringArrayListExtra(Define.INTENT_UPLOAD);
-                onCompleteUpload(uploadResult);
+                Bundle results = data.getBundleExtra(Define.INTENT_UPLOAD);
+                invokeSuccessWithResult(results);
             }
             if (requestCode == REQUEST_CAMERA) { // 카메라로부터 이미지 결과를 받아온 경우
                 // API 24+ 대응 코드로 변경됨
                 if (resultCode == RESULT_OK) { // 카메라로부터의 결과 코드가 OK인경우, 이미지를 가져옴
-                    File savedFile = new File(cameraUtil.getSavePath()); // 이미지 파일 가져오기
-                    new SingleMediaScanner(activity, savedFile);
-                    ArrayList<Uri> mPath = new ArrayList<>();
-                    mPath.add(Uri.fromFile(savedFile));
-                    invokeSuccessWithResult(mPath);
+//                    File savedFile = new File(cameraUtil.getSavePath()); // 이미지 파일 가져오기
+//                    new SingleMediaScanner(activity, savedFile);
+//                    ArrayList<Uri> mPath = new ArrayList<>();
+//                    mPath.add(Uri.fromFile(savedFile));
+//                    invokeSuccessWithResult(mPath);
                 } else { // 카메라로부터의 결과 코드가 OK가 아니면, 이미지를 저장하려던 경로의 파일을 제거
                     new File(cameraUtil.getSavePath()).delete();
                 }
@@ -120,17 +110,6 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
 
         }
     };
-
-    private void invokeSuccessWithResult(List<Uri> imageUriList) {
-        Log.d(TAG, String.format("invokeSuccessWithResult imageUriList : %s", imageUriList.toString()));
-        Intent i = new Intent(getCurrentActivity(), UploadActivity.class);
-        i.putExtra("boardId", boardId);
-        i.putExtra("postNo", postNo);
-        i.putExtra("uploadUrl", uploadUrl);
-        i.putExtra("cookie", cookie);
-        i.putParcelableArrayListExtra("imageUriList", new ArrayList<Parcelable>(imageUriList));
-        getCurrentActivity().startActivityForResult(i, Define.UPLOAD_IMAGES_REQUEST_CODE);
-    }
 
     private void createDirectory(String path, boolean noMedia) {
         File folder = new File(Environment.getExternalStorageDirectory(), path);
@@ -146,18 +125,22 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void onCompleteUpload(List<String> uploadResult) {
-        WritableArray imageList = new WritableNativeArray();
-        for (String result : uploadResult) {
-            if (result != null) {
-                imageList.pushString(result);
-            }
+    private void invokeSuccessWithResult(Bundle uploadResult) {
+        WritableMap ret = new WritableNativeMap();
+        WritableArray fileArray = new WritableNativeArray();
+        ret.putBoolean("isSuccess", uploadResult.getBoolean("isSuccess"));
+        ret.putBoolean("result", uploadResult.getBoolean("result"));
+        ret.putString("message", uploadResult.getString("message"));
+        ret.putInt("successCount", uploadResult.getInt("successCount"));
+        for (String file : uploadResult.getStringArrayList("fileArray")) {
+            fileArray.pushString(file);
         }
+        ret.putArray("fileArray", fileArray);
         if (this.mPickerCallback != null) {
-            this.mPickerCallback.invoke(null, imageList);
+            this.mPickerCallback.invoke(null, ret);
             this.mPickerCallback = null;
         } else if (this.mPickerPromise != null) {
-            this.mPickerPromise.resolve(imageList);
+            this.mPickerPromise.resolve(ret);
         }
     }
 

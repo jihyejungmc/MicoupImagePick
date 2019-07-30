@@ -39,7 +39,6 @@ public class Define {
     public static String TITLE_ALBUM_ALL_VIEW = "";
     public static String TITLE_ACTIONBAR = "";
 
-
     public static final String SAVE_INSTANCE_ALBUM_LIST = "instance_album_list";
     public static final String SAVE_INSTANCE_ALBUM_THUMB_LIST = "instance_album_thumb_list";
 

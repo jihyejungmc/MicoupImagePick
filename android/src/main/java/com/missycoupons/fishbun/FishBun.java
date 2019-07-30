@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 
+import com.missycoupons.R;
 import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.ui.album.AlbumActivity;
 
 import java.util.ArrayList;
-import com.missycoupons.R;
 
 
 public class FishBun {
@@ -28,6 +28,10 @@ public class FishBun {
 
     public static class BaseProperty implements BasePropertyImpl {
 
+        private String boardId;
+        private String postNo;
+        private String uploadUrl;
+        private String cookie;
         private ArrayList<Uri> arrayPaths = new ArrayList<>();
         private Activity activity = null;
         private Fragment fragment = null;
@@ -59,6 +63,26 @@ public class FishBun {
             Define.PHOTO_SPAN_COUNT = spanCount;
             return baseProperty;
 
+        }
+
+        public BaseProperty setBoardId(String boardId) {
+            this.boardId = boardId;
+            return baseProperty;
+        }
+
+        public BaseProperty setPostNo(String postNo) {
+            this.postNo = postNo;
+            return baseProperty;
+        }
+
+        public BaseProperty setUploadUrl(String uploadUrl) {
+            this.uploadUrl = uploadUrl;
+            return baseProperty;
+        }
+
+        public BaseProperty setCookie(String cookie) {
+            this.cookie = cookie;
+            return baseProperty;
         }
 
         public BaseProperty setPickerCount(int count) {
@@ -173,6 +197,10 @@ public class FishBun {
             setDefaultMessage(context);
 
             Intent i = new Intent(context, AlbumActivity.class);
+            i.putExtra("boardId", boardId);
+            i.putExtra("postNo", postNo);
+            i.putExtra("uploadUrl", uploadUrl);
+            i.putExtra("cookie", cookie);
             i.putParcelableArrayListExtra(Define.INTENT_PATH, arrayPaths);
 
             if (activity != null)

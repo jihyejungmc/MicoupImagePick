@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,14 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import android.widget.TextView;
-import com.missycoupons.fishbun.ItemDecoration.DividerItemDecoration;
+import android.widget.Toast;
+
 import com.missycoupons.R;
+import com.missycoupons.fishbun.ItemDecoration.DividerItemDecoration;
 import com.missycoupons.fishbun.adapter.AlbumListAdapter;
 import com.missycoupons.fishbun.bean.Album;
 import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.permission.PermissionCheck;
+import com.missycoupons.fishbun.ui.upload.UploadController;
 import com.missycoupons.fishbun.util.ScanListener;
 import com.missycoupons.fishbun.util.SingleMediaScanner;
 import com.missycoupons.fishbun.util.UiUtil;
@@ -35,20 +36,29 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.widget.Toast.LENGTH_SHORT;
 
-public class AlbumActivity extends AppCompatActivity {
+
+public class AlbumActivity extends AppCompatActivity implements UploadController.Listener {
     private AlbumController albumController;
     private ArrayList<Album> albumList = new ArrayList<>();
 
-    private ViewGroup rootView;
     private RecyclerView recyclerAlbumList;
     private RelativeLayout relAlbumEmpty;
 
     private AlbumListAdapter adapter;
     private UiUtil uiUtil = new UiUtil();
 
+    private String boardId;
+    private String postNo;
+    private String uploadUrl;
+    private String cookie;
+
     private TextView progressAlbumText;
-  
+
+    private View uploadView;
+    private TextView uploadText;
+
     private int defCameraAlbum = 0;
 
 
@@ -58,6 +68,10 @@ public class AlbumActivity extends AppCompatActivity {
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES, adapter.getPickedImagePath());
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST, (ArrayList<? extends Parcelable>) adapter.getAlbumList());
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST, (ArrayList<Uri>) adapter.getThumbList());
+            outState.putString("boardId", boardId);
+            outState.putString("postNo", postNo);
+            outState.putString("uploadUrl", uploadUrl);
+            outState.putString("cookie", cookie);
         }
         super.onSaveInstanceState(outState);
     }
@@ -70,6 +84,10 @@ public class AlbumActivity extends AppCompatActivity {
         List<Album> albumList = outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST);
         List<Uri> thumbList = outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST);
         ArrayList<Uri> pickedImagePath = outState.getParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES);
+        boardId = outState.getString("boardId");
+        postNo = outState.getString("postNo");
+        uploadUrl = outState.getString("uploadUrl");
+        cookie = outState.getString("cookie");
 
         if (albumList != null && thumbList != null && pickedImagePath != null) {
             adapter = new AlbumListAdapter(albumList, pickedImagePath);
@@ -102,8 +120,8 @@ public class AlbumActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        rootView = (ViewGroup) findViewById(R.id.coor_album_root);
-        rootView.setVisibility(View.VISIBLE);
+        uploadView = findViewById(R.id.UploadingView);
+        uploadText = findViewById(R.id.UploadingText);
         LinearLayout linearAlbumCamera = (LinearLayout) findViewById(R.id.lin_album_camera);
         linearAlbumCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +153,7 @@ public class AlbumActivity extends AppCompatActivity {
         relAlbumEmpty = (RelativeLayout) findViewById(R.id.rel_album_empty);
         progressAlbumText = (TextView) findViewById(R.id.txt_album_msg);
         progressAlbumText.setText(R.string.msg_loading_image);
-      
+
         setSupportActionBar(toolbar);
 
 
@@ -157,8 +175,13 @@ public class AlbumActivity extends AppCompatActivity {
 
     private void setAlbumListAdapter() {
 
-        if (adapter == null){
-            ArrayList<Uri> data = getIntent().getParcelableArrayListExtra(Define.INTENT_PATH);
+        if (adapter == null) {
+            Intent intent = getIntent();
+            ArrayList<Uri> data = intent.getParcelableArrayListExtra(Define.INTENT_PATH);
+            boardId = intent.getStringExtra("boardId");
+            postNo = intent.getStringExtra("postNo");
+            uploadUrl = intent.getStringExtra("uploadUrl");
+            cookie = intent.getStringExtra("cookie");
             adapter = new AlbumListAdapter(albumList, data);
         }
         recyclerAlbumList.setAdapter(adapter);
@@ -218,7 +241,7 @@ public class AlbumActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         //if (Define.IS_BUTTON)
-            //getMenuInflater().inflate(R.menu.menu_photo_album, menu);
+        //getMenuInflater().inflate(R.menu.menu_photo_album, menu);
         return true;
     }
 
@@ -238,7 +261,6 @@ public class AlbumActivity extends AppCompatActivity {
                     finish();
                 }
             }
-
         }*/
         return super.onOptionsItemSelected(item);
     }
@@ -249,9 +271,7 @@ public class AlbumActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Define.ENTER_ALBUM_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                rootView.setVisibility(View.GONE);
-                setResult(RESULT_OK, data);
-                finish();
+                uploadPhotos(data);
             } else if (resultCode == Define.TRANS_IMAGES_RESULT_CODE) {
                 ArrayList<Uri> path = data.getParcelableArrayListExtra(Define.INTENT_PATH);
                 ArrayList<Uri> addPath = data.getParcelableArrayListExtra(Define.INTENT_ADD_PATH);
@@ -290,5 +310,31 @@ public class AlbumActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private void uploadPhotos(Intent data) {
+        ArrayList<Uri> mPath = data.getParcelableArrayListExtra(Define.INTENT_PATH); // 선택된 이미지들 경로를 받아옴
+        if (mPath == null || mPath.size() == 0) return;
+        new UploadController.Builder(this)
+                .progressView(uploadView)
+                .progressText(uploadText)
+                .boardId(boardId)
+                .postNo(postNo)
+                .uploadUrl(uploadUrl)
+                .cookie(cookie)
+                .imageUriList(mPath)
+                .build()
+                .start(this);
+    }
+
+    @Override
+    public void onError(String message) {
+        Toast.makeText(this, message, LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSuccess(Intent intent) {
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
