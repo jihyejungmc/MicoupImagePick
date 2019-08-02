@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -58,6 +59,15 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
         this.openImagePicker();
     }
 
+    @ReactMethod
+    public void openCameraWithOptions(ReadableMap options, Promise promise) {
+        this.cameraOptions = options;
+        this.mPickerPromise = promise;
+        this.mPickerCallback = null;
+        createDirectory("micoup", true);
+        this.takePictureFromCamera();
+    }
+
     private void openImagePicker() {
         String boardId = this.cameraOptions.getString("boardId");
         String postNo = this.cameraOptions.getString("documentNo");
@@ -88,26 +98,35 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
                 .startAlbum();
     }
 
+    private void takePictureFromCamera() {
+        String boardId = this.cameraOptions.getString("boardId");
+        String postNo = this.cameraOptions.getString("documentNo");
+        String uploadUrl = this.cameraOptions.getString("imageUploadURL");
+        String cookie = this.cameraOptions.getString("cookie");
+        this.reactContext.addActivityEventListener(mActivityEventListener);
+        Activity currentActivity = getCurrentActivity();
+        String saveDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DCIM + "/Camera").getAbsolutePath();
+        FishBun.with(currentActivity)
+                .setBoardId(boardId)
+                .setPostNo(postNo)
+                .setUploadUrl(uploadUrl)
+                .setCookie(cookie)
+                .setSaveDir(saveDir)
+                .setActionBarColor(Color.parseColor("#EFEFEF"), Color.parseColor("#000000"))
+                .setActionBarTitleColor(Color.parseColor("#333333"))
+                .openCamera();
+    }
+
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
         public void onActivityResult(Activity activity, int requestCode, int resultCode, final Intent data) {
-            if (requestCode == Define.ALBUM_REQUEST_CODE && resultCode == RESULT_OK) { // FishBun 으로부터 결과를 받아온 경우 ( Fishbun 선택 후 이미지 편집기로 편집한 경우도 포함 )
+//            Log.d("onActivityResult", String.format("requestCode : %d", requestCode));
+            // FishBun 으로부터 결과를 받아온 경우
+            if (resultCode == RESULT_OK) {
                 Bundle results = data.getBundleExtra(Define.INTENT_UPLOAD);
                 invokeSuccessWithResult(results);
             }
-            if (requestCode == REQUEST_CAMERA) { // 카메라로부터 이미지 결과를 받아온 경우
-                // API 24+ 대응 코드로 변경됨
-                if (resultCode == RESULT_OK) { // 카메라로부터의 결과 코드가 OK인경우, 이미지를 가져옴
-//                    File savedFile = new File(cameraUtil.getSavePath()); // 이미지 파일 가져오기
-//                    new SingleMediaScanner(activity, savedFile);
-//                    ArrayList<Uri> mPath = new ArrayList<>();
-//                    mPath.add(Uri.fromFile(savedFile));
-//                    invokeSuccessWithResult(mPath);
-                } else { // 카메라로부터의 결과 코드가 OK가 아니면, 이미지를 저장하려던 경로의 파일을 제거
-                    new File(cameraUtil.getSavePath()).delete();
-                }
-            }
-
         }
     };
 

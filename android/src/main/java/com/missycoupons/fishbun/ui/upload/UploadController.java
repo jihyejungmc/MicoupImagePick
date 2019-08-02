@@ -166,14 +166,14 @@ public class UploadController implements LoadingView {
 
     @Override
     public void onUploadStart(String id) {
-        Log.d(TAG, String.format("onUploadStart %s", id));
+//        Log.d(TAG, String.format("onUploadStart %s", id));
         progressMap.put(id, null);
         this.showUploadView();
     }
 
     @Override
     public void onUploadFinish(String id, String result) {
-        Log.d(TAG, String.format("onUploadFinish %s %s", id, result));
+//        Log.d(TAG, String.format("onUploadFinish %s %s", id, result));
         boolean allUploaded = true;
         progressMap.put(id, result);
         int completeCount = 0;

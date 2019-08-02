@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import com.missycoupons.R;
 import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.ui.album.AlbumActivity;
+import com.missycoupons.fishbun.ui.camera.CameraActivity;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class FishBun {
         private String postNo;
         private String uploadUrl;
         private String cookie;
+        private String saveDir;
         private ArrayList<Uri> arrayPaths = new ArrayList<>();
         private Activity activity = null;
         private Fragment fragment = null;
@@ -82,6 +84,11 @@ public class FishBun {
 
         public BaseProperty setCookie(String cookie) {
             this.cookie = cookie;
+            return baseProperty;
+        }
+
+        public BaseProperty setSaveDir(String saveDir) {
+            this.saveDir = saveDir;
             return baseProperty;
         }
 
@@ -212,7 +219,38 @@ public class FishBun {
 
         }
 
+        public void openCamera() {
+            int requestCode = Define.CAMERA_REQUEST_CODE ;
+            Context context = null;
+            if (activity != null)
+                context = activity;
+            else if (fragment != null)
+                context = fragment.getActivity();
+            else
+                try {
+                    throw new Exception("Activity or Fragment Null");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
+            if (Define.ALBUM_THUMBNAIL_SIZE == -1)
+                Define.ALBUM_THUMBNAIL_SIZE = (int) context.getResources().getDimension(R.dimen.album_thum_size);
+
+            setDefaultMessage(context);
+
+            Intent i = new Intent(context, CameraActivity.class);
+            i.putExtra("boardId", boardId);
+            i.putExtra("postNo", postNo);
+            i.putExtra("uploadUrl", uploadUrl);
+            i.putExtra("cookie", cookie);
+            i.putExtra("saveDir", saveDir);
+
+            if (activity != null)
+                activity.startActivityForResult(i, requestCode);
+
+            else if (fragment != null)
+                fragment.startActivityForResult(i, requestCode);
+        }
     }
 
     interface BasePropertyImpl {
