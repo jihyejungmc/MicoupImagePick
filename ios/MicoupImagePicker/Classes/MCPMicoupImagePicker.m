@@ -1,12 +1,15 @@
 
 #import "MCPMicoupImagePicker.h"
 #import <React/RCTLog.h>
+#import <React/RCTUtils.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "HTTPAPICommunicator.h"
 #import "MCPPhotoGroupViewController.h"
 #import "MCPPhotoEditViewController.h"
 #import "MCPImageUploadResult.h"
-
+#import "MCPPhotoEditInfo.h"
+#import "MCPCameraViewController.h"
 
 @interface MCPMicoupImagePicker ()
 
@@ -43,6 +46,57 @@ RCT_EXPORT_METHOD(showImagePickerWithOptions:(NSDictionary *)options
     self.showImagePickerResolveHandler = resolve;
     self.showImagePickerRejectHandler = reject;
     [self showImagePicker:options];
+}
+
+RCT_EXPORT_METHOD(openCameraWithOptions:(NSDictionary *)options
+                              resolveHandler:(RCTPromiseResolveBlock)resolve
+                               rejectHandler:(RCTPromiseRejectBlock)reject) {
+    self.showImagePickerResolveHandler = resolve;
+    self.showImagePickerRejectHandler = reject;
+    [self openCamera:options];
+}
+
+- (void)openCamera:(NSDictionary *)options  {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSURL *resourceBundleURL = [bundle URLForResource:@"Resources" withExtension:@"bundle"];
+    NSBundle *resourceBundle = [NSBundle bundleWithURL:resourceBundleURL];
+    UIStoryboard *storyboad = [UIStoryboard storyboardWithName:@"Board" bundle:resourceBundle];
+    MCPCameraViewController *viewController = [storyboad instantiateViewControllerWithIdentifier:@"CameraViewController"];
+
+
+    NSString *boardId = options[@"boardId"];
+    if (boardId.length) {
+        viewController.boardId = boardId;
+    }
+
+    NSString *documentNo = options[@"documentNo"];
+    if (documentNo.length) {
+        viewController.documentNo = documentNo;
+    }
+
+    NSString *cookie = options[@"cookie"];
+    if (cookie) {
+        [HTTPAPICommunicator sharedInstance].cookie = cookie;
+    }
+
+    NSString *userAgent = options[@"userAgent"];
+    if (userAgent) {
+        [HTTPAPICommunicator sharedInstance].userAgent = userAgent;
+    }
+
+    NSString *imageUploadURL = options[@"imageUploadURL"];
+    if (imageUploadURL) {
+        [HTTPAPICommunicator sharedInstance].imageUploadURL = imageUploadURL;
+    }
+  
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.navigationBarHidden = YES;
+  
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootViewController presentViewController:navigationController animated:YES completion:nil];
+  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageUploadSuccessNotificationHandler:) name:NotifyImageUploadSuccess object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageUploadFailNotificationHandler:) name:NotifyImageUploadFail object:nil];
 }
 
 - (void)showImagePicker:(NSDictionary *)options  {
