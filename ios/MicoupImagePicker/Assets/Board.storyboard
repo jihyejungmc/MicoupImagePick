@@ -78,7 +78,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-yH-baj">
-                                                <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_close_x"/>
                                                 <connections>
@@ -530,7 +530,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6T-Z7-MOo">
-                                                <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_close_x"/>
                                                 <connections>
@@ -592,58 +592,11 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sd-F9-c28">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g45-44-W05" userLabel="View - status">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6v-E0-NDr">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-ah-NZS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="44"/>
-                                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                                        <state key="normal" image="btn_close_x"/>
-                                                        <connections>
-                                                            <action selector="closeAction:" destination="syb-Qs-6lM" eventType="touchUpInside" id="5ZS-xo-bcN"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7v-fk-1WS">
-                                                        <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="0fE-hY-Zeh"/>
-                                                    <constraint firstItem="X5C-ah-NZS" firstAttribute="leading" secondItem="f6v-E0-NDr" secondAttribute="leading" id="3EN-V8-qaO"/>
-                                                    <constraint firstItem="A7v-fk-1WS" firstAttribute="centerX" secondItem="f6v-E0-NDr" secondAttribute="centerX" id="JeB-Pl-gIw"/>
-                                                    <constraint firstItem="A7v-fk-1WS" firstAttribute="centerY" secondItem="f6v-E0-NDr" secondAttribute="centerY" id="VtQ-GY-MKf"/>
-                                                    <constraint firstItem="X5C-ah-NZS" firstAttribute="top" secondItem="f6v-E0-NDr" secondAttribute="top" id="aC7-LQ-gYg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="X5C-ah-NZS" secondAttribute="bottom" id="tdN-Qu-JOD"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="f6v-E0-NDr" secondAttribute="trailing" id="8Jv-SC-mFn"/>
-                                            <constraint firstItem="f6v-E0-NDr" firstAttribute="leading" secondItem="g45-44-W05" secondAttribute="leading" id="Abr-uC-X33"/>
-                                            <constraint firstItem="f6v-E0-NDr" firstAttribute="top" secondItem="g45-44-W05" secondAttribute="top" id="Y2E-rw-IV5"/>
-                                            <constraint firstAttribute="bottom" secondItem="f6v-E0-NDr" secondAttribute="bottom" id="eRh-8m-Mt7"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="g45-44-W05" firstAttribute="top" secondItem="slW-x3-Gru" secondAttribute="top" id="7ZP-LY-6O7"/>
-                                    <constraint firstItem="g45-44-W05" firstAttribute="leading" secondItem="slW-x3-Gru" secondAttribute="leading" id="8xm-VO-BTT"/>
-                                    <constraint firstItem="slW-x3-Gru" firstAttribute="trailing" secondItem="g45-44-W05" secondAttribute="trailing" id="hUK-wN-SJ5"/>
-                                </constraints>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="slW-x3-Gru"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uPI-b6-OQ9"/>
                     </view>
                 </viewController>
