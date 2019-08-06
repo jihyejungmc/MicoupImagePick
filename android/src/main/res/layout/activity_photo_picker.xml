@@ -79,5 +79,36 @@
             android:src="@mipmap/fishbun_attach"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/UploadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#11ffffff"
+        android:clickable="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="24dp"
+            android:background="@color/colorLoader"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/UploadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

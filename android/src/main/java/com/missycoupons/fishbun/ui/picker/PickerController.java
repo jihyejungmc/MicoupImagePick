@@ -79,7 +79,7 @@ public class PickerController {
         pickerActivity.showToolbarTitle();
     }
 
-    public void setBottombarText(int total){
+    public void setBottombarText(int total) {
         pickerActivity.setBottomBarTitle(total);
     }
 
@@ -103,19 +103,16 @@ public class PickerController {
         this.addImagePaths = addImagePaths;
     }
 
-    public void finishActivity(ArrayList<PickedImage> pickedImages) {
+    public void uploadPhotos(ArrayList<PickedImage> pickedImages) {
         ArrayList<Uri> path = new ArrayList<>();
         for (int i = 0; i < pickedImages.size(); i++) {
             path.add(pickedImages.get(i).getImgPath());
         }
-        finishActivity(path, true);
+        uploadPhotos(path, true);
     }
 
-    public void finishActivity(ArrayList<Uri> path, boolean direct) {
-        Intent i = new Intent();
-        i.putParcelableArrayListExtra(Define.INTENT_PATH, path);
-        pickerActivity.setResult(PickerActivity.RESULT_OK, i);
-        pickerActivity.finish();
+    public void uploadPhotos(ArrayList<Uri> path, boolean direct) {
+        pickerActivity.uploadPhotos(path);
     }
 
     void transImageFinish(ArrayList<PickedImage> pickedImages, int position) {

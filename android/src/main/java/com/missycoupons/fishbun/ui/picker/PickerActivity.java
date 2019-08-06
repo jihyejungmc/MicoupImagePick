@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.missycoupons.R;
 import com.missycoupons.fishbun.adapter.PickerGridAdapter;
@@ -26,18 +27,18 @@ import com.missycoupons.fishbun.bean.PickedImage;
 import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.permission.PermissionCheck;
 import com.missycoupons.fishbun.ui.editor.EditorActivity;
+import com.missycoupons.fishbun.ui.upload.UploadController;
 import com.missycoupons.fishbun.util.SingleMediaScanner;
 import com.missycoupons.fishbun.util.UiUtil;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.util.ArrayList;
 
+import static android.widget.Toast.LENGTH_SHORT;
 import static com.missycoupons.fishbun.ui.editor.EditorActivity.DebugLog;
 
 
-public class PickerActivity extends AppCompatActivity {
+public class PickerActivity extends AppCompatActivity implements UploadController.Listener  {
 
     private static final String TAG = "PickerActivity";
 
@@ -53,6 +54,16 @@ public class PickerActivity extends AppCompatActivity {
     private ImageView DoneImageView;
     private ImageView DoneImageView2;
 
+    private String boardId;
+    private String postNo;
+    private String uploadUrl;
+    private String cookie;
+
+    private TextView progressAlbumText;
+
+    private View uploadView;
+    private TextView uploadText;
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         try {
@@ -60,6 +71,10 @@ public class PickerActivity extends AppCompatActivity {
             outState.putString(Define.SAVE_INSTANCE_SAVED_IMAGE, pickerController.getSavePath());
             outState.putParcelableArray(Define.SAVE_INSTANCE_SAVED_IMAGE_THUMBNAILS, adapter.getImages());
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_NEW_IMAGES, pickerController.getAddImagePaths());
+            outState.putString("boardId", boardId);
+            outState.putString("postNo", postNo);
+            outState.putString("uploadUrl", uploadUrl);
+            outState.putString("cookie", cookie);
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
@@ -73,6 +88,10 @@ public class PickerActivity extends AppCompatActivity {
         super.onRestoreInstanceState(outState);
         // Restore state members from saved instance
         try {
+            boardId = outState.getString("boardId");
+            postNo = outState.getString("postNo");
+            uploadUrl = outState.getString("uploadUrl");
+            cookie = outState.getString("cookie");
             pickedImages = outState.getParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES);
             ArrayList<Uri> addImages = outState.getParcelableArrayList(Define.SAVE_INSTANCE_NEW_IMAGES);
             String savedImage = outState.getString(Define.SAVE_INSTANCE_SAVED_IMAGE);
@@ -99,6 +118,8 @@ public class PickerActivity extends AppCompatActivity {
         initView();
         initController();
         setData(getIntent());
+        uploadView = findViewById(R.id.UploadingView);
+        uploadText = findViewById(R.id.UploadingText);
         SelectedPhotoTextView = (TextView)findViewById(R.id.Text_View);
         TitleTextView = (TextView)findViewById(R.id.TitleView);
         DoneImageView = (ImageView)findViewById(R.id.Done_View);
@@ -127,7 +148,7 @@ public class PickerActivity extends AppCompatActivity {
                 if (pickedImages.size() == 0) {
                     Snackbar.make(recyclerView, Define.MESSAGE_NOTHING_SELECTED, Snackbar.LENGTH_SHORT).show();
                 } else {
-                    pickerController.finishActivity(pickedImages);
+                    pickerController.uploadPhotos(pickedImages);
                 }
             }
         });
@@ -164,7 +185,7 @@ public class PickerActivity extends AppCompatActivity {
         if (requestCode == EditorActivity.EDITOR_REQUEST_CODE) {
             if (data == null) return;
             ArrayList<Uri> path = data.getParcelableArrayListExtra(EditorActivity.DATA_TAG);
-            pickerController.finishActivity(path, true);
+            pickerController.uploadPhotos(path, true);
         }
     }
 
@@ -206,7 +227,7 @@ public class PickerActivity extends AppCompatActivity {
             if (pickedImages.size() == 0) {
                 Snackbar.make(recyclerView, Define.MESSAGE_NOTHING_SELECTED, Snackbar.LENGTH_SHORT).show();
             } else {
-                pickerController.finishActivity(pickedImages);
+                pickerController.uploadPhotos(pickedImages);
             }
             return true;
         } else */if (id == android.R.id.home)
@@ -232,6 +253,10 @@ public class PickerActivity extends AppCompatActivity {
     }
 
     private void setData(Intent intent) {
+        boardId = intent.getStringExtra("boardId");
+        postNo = intent.getStringExtra("postNo");
+        uploadUrl = intent.getStringExtra("uploadUrl");
+        cookie = intent.getStringExtra("cookie");
         album = intent.getParcelableExtra("album");
         position = intent.getIntExtra("position", -1);
 
@@ -281,5 +306,28 @@ public class PickerActivity extends AppCompatActivity {
         setBottomBarTitle(pickedImages.size());
     }
 
+    public void uploadPhotos(ArrayList<Uri> paths) {
+        if (paths == null || paths.size() == 0) return;
+        new UploadController.Builder(this)
+                .progressView(uploadView)
+                .progressText(uploadText)
+                .boardId(boardId)
+                .postNo(postNo)
+                .uploadUrl(uploadUrl)
+                .cookie(cookie)
+                .imageUriList(paths)
+                .build()
+                .start(this);
+    }
 
+    @Override
+    public void onError(String message) {
+        Toast.makeText(this, message, LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSuccess(Intent intent) {
+        setResult(RESULT_OK, intent);
+        finish();
+    }
 }

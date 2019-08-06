@@ -13,13 +13,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.missycoupons.R;
 import com.missycoupons.fishbun.bean.Album;
 import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.ui.picker.PickerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.missycoupons.R;
 
 public class AlbumListAdapter
         extends RecyclerView.Adapter<AlbumListAdapter.ViewHolder> {
@@ -27,6 +27,10 @@ public class AlbumListAdapter
     private List<Album> albumList;
     private List<Uri> thumbList = new ArrayList<>();
     private ArrayList<Uri> pickedImagePath;
+    private String boardId;
+    private String postNo;
+    private String uploadUrl;
+    private String cookie;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -46,9 +50,14 @@ public class AlbumListAdapter
         }
     }
 
-    public AlbumListAdapter(List<Album> albumList, ArrayList<Uri> pickedImagePath) {
+    public AlbumListAdapter(List<Album> albumList, ArrayList<Uri> pickedImagePath,
+                            String boardId, String postNo, String uploadUrl, String cookie) {
         this.albumList = albumList;
         this.pickedImagePath = pickedImagePath;
+        this.boardId = boardId;
+        this.postNo = postNo;
+        this.uploadUrl = uploadUrl;
+        this.cookie = cookie;
     }
 
     @Override
@@ -90,7 +99,10 @@ public class AlbumListAdapter
                 i.putExtra("album", a);
                 i.putExtra("album_title", albumList.get(position).bucketName);
                 i.putExtra("position", position);
-
+                i.putExtra("boardId", boardId);
+                i.putExtra("postNo", postNo);
+                i.putExtra("uploadUrl", uploadUrl);
+                i.putExtra("cookie", cookie);
                 i.putParcelableArrayListExtra(Define.INTENT_PATH, pickedImagePath);
                 ((Activity) context).startActivityForResult(i, Define.ENTER_ALBUM_REQUEST_CODE);
             }

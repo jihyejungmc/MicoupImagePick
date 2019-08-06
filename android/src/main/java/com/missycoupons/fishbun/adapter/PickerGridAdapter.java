@@ -153,7 +153,7 @@ public class PickerGridAdapter
                         pickerController.pickerActivity.setBottomBarTitle(pickedImages.size());
                         if (Define.IS_AUTOMATIC_CLOSE
                                 && Define.ALBUM_PICKER_COUNT == pickedImages.size()) {
-                            pickerController.finishActivity(pickedImages);
+                            pickerController.uploadPhotos(pickedImages);
                         }
 
                         if (Define.ALBUM_PICKER_COUNT == 1)

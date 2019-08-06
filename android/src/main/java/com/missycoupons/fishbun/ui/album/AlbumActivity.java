@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -55,7 +54,6 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
     private String cookie;
 
     private TextView progressAlbumText;
-
     private View uploadView;
     private TextView uploadText;
 
@@ -90,7 +88,7 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
         cookie = outState.getString("cookie");
 
         if (albumList != null && thumbList != null && pickedImagePath != null) {
-            adapter = new AlbumListAdapter(albumList, pickedImagePath);
+            adapter = new AlbumListAdapter(albumList, pickedImagePath, boardId, postNo, uploadUrl, cookie);
             adapter.setThumbList(thumbList);
         }
     }
@@ -182,7 +180,7 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
             postNo = intent.getStringExtra("postNo");
             uploadUrl = intent.getStringExtra("uploadUrl");
             cookie = intent.getStringExtra("cookie");
-            adapter = new AlbumListAdapter(albumList, data);
+            adapter = new AlbumListAdapter(albumList, data, boardId, postNo, uploadUrl, cookie);
         }
         recyclerAlbumList.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -271,7 +269,8 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Define.ENTER_ALBUM_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                uploadPhotos(data);
+                setResult(RESULT_OK, data);
+                finish();
             } else if (resultCode == Define.TRANS_IMAGES_RESULT_CODE) {
                 ArrayList<Uri> path = data.getParcelableArrayListExtra(Define.INTENT_PATH);
                 ArrayList<Uri> addPath = data.getParcelableArrayListExtra(Define.INTENT_ADD_PATH);
@@ -311,6 +310,7 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
             }
         }
     }
+
 
     private void uploadPhotos(Intent data) {
         ArrayList<Uri> mPath = data.getParcelableArrayListExtra(Define.INTENT_PATH); // 선택된 이미지들 경로를 받아옴
