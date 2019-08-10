@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -77,6 +76,7 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
         int spanCount = this.cameraOptions.getInt("spanCount");
         boolean enableCamera = this.cameraOptions.getBoolean("enableCamera");
         this.reactContext.addActivityEventListener(mActivityEventListener);
+        String limitMsg = String.format("최대 %d장까지 입력가능합니다.", imageCount);
         Activity currentActivity = getCurrentActivity();
         FishBun.with(currentActivity)
                 .setBoardId(boardId)
@@ -87,7 +87,7 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
                 .setPickerSpanCount(spanCount)
                 .setActionBarColor(Color.parseColor("#EFEFEF"), Color.parseColor("#000000"))
                 .setActionBarTitleColor(Color.parseColor("#333333"))
-                .textOnImagesSelectionLimitReached("최대 20장까지 입력가능합니다.")
+                .textOnImagesSelectionLimitReached(limitMsg)
                 .textOnNothingSelected("사진을 선택해주세요")
                 .setAlbumSpanCount(1, 1)
                 .setButtonInAlbumActivity(true)
