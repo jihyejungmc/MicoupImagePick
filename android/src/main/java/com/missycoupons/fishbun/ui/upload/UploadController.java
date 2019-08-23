@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -197,7 +196,10 @@ public class UploadController implements LoadingView {
     }
 
     private Bundle combineResults() {
-        ArrayList<String> responses = new ArrayList<String>(this.progressMap.values());
+        ArrayList<String> responses = new ArrayList<String>();
+        for (Uri uri : imageUriList) {
+            responses.add(this.progressMap.get(uri.toString()));
+        }
         Bundle bundle = new Bundle();
         ArrayList<String> fileArray = new ArrayList<>();
         boolean allSuccess = true;
