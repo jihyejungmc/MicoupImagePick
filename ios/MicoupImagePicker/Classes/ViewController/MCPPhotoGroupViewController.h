@@ -11,6 +11,7 @@
 @interface MCPPhotoGroupViewController : MCPBaseViewController<UITableViewDelegate, UITableViewDataSource>{
     
     IBOutlet UITableView *_tableView;
+    UIView *loadingView;
 }
 
 @property (strong, nonatomic) NSString *boardId;
