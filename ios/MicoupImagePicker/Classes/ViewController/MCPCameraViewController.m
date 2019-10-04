@@ -48,7 +48,10 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-  [picker dismissViewControllerAnimated:YES completion:nil];
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [rootViewController dismissViewControllerAnimated:NO completion:nil];
+    }];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
