@@ -85,6 +85,8 @@ public class CameraActivity extends AppCompatActivity implements UploadControlle
                 uploadPhoto(savedFile);
             } else {
                 new File(cameraUtil.getSavePath()).delete();
+                setResult(RESULT_CANCELED);
+                finish();
             }
         }
     }

@@ -126,6 +126,8 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
             if (resultCode == RESULT_OK) {
                 Bundle results = data.getBundleExtra(Define.INTENT_UPLOAD);
                 invokeSuccessWithResult(results);
+            } else {
+                invokeError(resultCode);
             }
         }
     };
