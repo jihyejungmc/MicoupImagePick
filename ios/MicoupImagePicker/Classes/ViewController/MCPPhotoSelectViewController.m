@@ -411,8 +411,8 @@
             }
         }
         else{
-            NSDictionary *userInfo = @{@"error": error};
-            [[NSNotificationCenter defaultCenter] postNotificationName:NotifyImageUploadFail object:self userInfo:userInfo];
+//             NSDictionary *userInfo = @{@"error": error};
+//             [[NSNotificationCenter defaultCenter] postNotificationName:NotifyImageUploadFail object:self userInfo:userInfo];
             
             [self.apiManager processError:error completion:^(NSHTTPURLResponse *response) {
 
