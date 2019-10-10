@@ -22,7 +22,7 @@ class AlbumController {
 
     private AlbumActivity albumActivity;
     private ContentResolver resolver;
-    private CameraUtil cameraUtil = new CameraUtil();
+    private CameraUtil cameraUtil = CameraUtil.getInstance();
 
     AlbumController(AlbumActivity albumActivity) {
         this.albumActivity = albumActivity;

@@ -31,7 +31,7 @@ public class PickerController {
     private ArrayList<Uri> addImagePaths = new ArrayList<>();
     private String savePath;
     private ContentResolver resolver;
-    private CameraUtil cameraUtil = new CameraUtil();
+    private CameraUtil cameraUtil = CameraUtil.getInstance();
     private String pathDir = "";
 
 

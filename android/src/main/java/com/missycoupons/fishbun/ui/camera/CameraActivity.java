@@ -45,7 +45,7 @@ public class CameraActivity extends AppCompatActivity implements UploadControlle
         uploadView = findViewById(R.id.UploadingView);
         uploadText = findViewById(R.id.UploadingText);
 
-        this.cameraUtil = new CameraUtil();
+        this.cameraUtil = CameraUtil.getInstance();
         Log.d("CameraActivity", "onCreate");
         Intent intent = getIntent();
         boardId = intent.getStringExtra("boardId");

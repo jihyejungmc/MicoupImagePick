@@ -50,7 +50,7 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
     private Album album;
     private int position;
     private UiUtil uiUtil = new UiUtil();
-    private CameraUtil cameraUtil = new CameraUtil();
+    private CameraUtil cameraUtil = CameraUtil.getInstance();
     private PickerGridAdapter adapter;
     private TextView SelectedPhotoTextView;
     private TextView TitleTextView;

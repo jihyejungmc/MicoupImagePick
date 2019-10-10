@@ -21,6 +21,18 @@ import java.util.Date;
 public class CameraUtil {
 
     private String savePath;
+    private static CameraUtil cameraUtil;
+
+    private CameraUtil() {
+        super();
+    }
+
+    public static CameraUtil getInstance() {
+        if (cameraUtil == null) {
+            cameraUtil = new CameraUtil();
+        }
+        return cameraUtil;
+    }
 
     public void takePicture(Activity activity, String saveDir) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

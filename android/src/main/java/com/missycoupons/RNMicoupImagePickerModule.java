@@ -41,7 +41,7 @@ public class RNMicoupImagePickerModule extends ReactContextBaseJavaModule {
     public RNMicoupImagePickerModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        this.cameraUtil = new CameraUtil();
+        this.cameraUtil = CameraUtil.getInstance();
     }
 
     @Override
