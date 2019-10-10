@@ -20,6 +20,7 @@
 
 @implementation MCPPhotoGroupViewController
 
+
 - (void)loadAssetGroups
 {
     self.assetsLibrary = [[ALAssetsLibrary alloc] init];
@@ -53,9 +54,25 @@
 }
 
 
+- (void)setupLoadingView
+{
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+    loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
+    loadingView.layer.cornerRadius = 5;
+    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.center = CGPointMake(loadingView.frame.size.width / 2.0, 35);
+    [activityView startAnimating];
+    activityView.tag = 100;
+    [loadingView addSubview:activityView];
+    loadingView.center = activityView.center;
+    [self.view addSubview:loadingView];
+}
+
 - (void)setupView
 {
     [super setupView];
+    [self setupLoadingView];
+    [loadingView setHidden:NO];
     if( [_groupArray count] < 1 ){
         [self loadAssetGroups];
     }
@@ -65,7 +82,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +121,7 @@
                         [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                     }
                 });
+                [loadingView setHidden:YES];
                 *stop = YES;
             }
         }];
@@ -117,7 +134,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
- 
+    
     
     MCPPhotoSelectViewController *nextVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PhotoSelectViewController"];
     nextVC.boardId = self.boardId;
@@ -131,13 +148,12 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
