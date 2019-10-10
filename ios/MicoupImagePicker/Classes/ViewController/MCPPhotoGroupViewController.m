@@ -56,15 +56,10 @@
 
 - (void)setupLoadingView
 {
-    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
-    loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
-    loadingView.layer.cornerRadius = 5;
     UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityView.center = CGPointMake(loadingView.frame.size.width / 2.0, 35);
+    activityView.center = self.view.center;
     [activityView startAnimating];
     activityView.tag = 100;
-    [loadingView addSubview:activityView];
-    loadingView.center = activityView.center;
     [self.view addSubview:loadingView];
 }
 
@@ -72,7 +67,6 @@
 {
     [super setupView];
     [self setupLoadingView];
-    [loadingView setHidden:NO];
     if( [_groupArray count] < 1 ){
         [self loadAssetGroups];
     }
@@ -121,7 +115,7 @@
                         [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                     }
                 });
-                [loadingView setHidden:YES];
+                [activityView stopAnimating];
                 *stop = YES;
             }
         }];
