@@ -23,6 +23,20 @@ public class PermissionCheck {
         this.context = context;
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
+    public boolean CheckCameraPermission() {
+        int permissionCheckStorage = ContextCompat.checkSelfPermission(context,
+                Manifest.permission_group.STORAGE);
+        int permissionCheckCamera = ContextCompat.checkSelfPermission(context,
+                android.Manifest.permission.CAMERA);
+        if (permissionCheckCamera != PackageManager.PERMISSION_GRANTED || permissionCheckStorage != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission_group.STORAGE},
+                    Define.PERMISSION_CAMERA);
+            return false;
+        } else
+            return true;
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     public boolean CheckStoragePermission() {

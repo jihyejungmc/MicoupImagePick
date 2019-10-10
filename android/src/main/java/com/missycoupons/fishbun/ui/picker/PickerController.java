@@ -71,7 +71,19 @@ public class PickerController {
     }
 
     public void takePicture(Activity activity, String saveDir) {
-        cameraUtil.takePicture(activity, saveDir);
+        if (checkCameraPermission()) {
+            cameraUtil.takePicture(activity, saveDir);
+        }
+    }
+
+    private boolean checkCameraPermission() {
+        PermissionCheck permissionCheck = new PermissionCheck(pickerActivity);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (permissionCheck.CheckCameraPermission())
+                return true;
+        } else
+            return true;
+        return false;
     }
 
 

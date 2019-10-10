@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import com.missycoupons.fishbun.define.Define;
 import com.missycoupons.fishbun.permission.PermissionCheck;
 import com.missycoupons.fishbun.ui.editor.EditorActivity;
 import com.missycoupons.fishbun.ui.upload.UploadController;
+import com.missycoupons.fishbun.util.CameraUtil;
 import com.missycoupons.fishbun.util.SingleMediaScanner;
 import com.missycoupons.fishbun.util.UiUtil;
 
@@ -38,7 +40,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static com.missycoupons.fishbun.ui.editor.EditorActivity.DebugLog;
 
 
-public class PickerActivity extends AppCompatActivity implements UploadController.Listener  {
+public class PickerActivity extends AppCompatActivity implements UploadController.Listener {
 
     private static final String TAG = "PickerActivity";
 
@@ -48,6 +50,7 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
     private Album album;
     private int position;
     private UiUtil uiUtil = new UiUtil();
+    private CameraUtil cameraUtil = new CameraUtil();
     private PickerGridAdapter adapter;
     private TextView SelectedPhotoTextView;
     private TextView TitleTextView;
@@ -120,10 +123,10 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
         setData(getIntent());
         uploadView = findViewById(R.id.UploadingView);
         uploadText = findViewById(R.id.UploadingText);
-        SelectedPhotoTextView = (TextView)findViewById(R.id.Text_View);
-        TitleTextView = (TextView)findViewById(R.id.TitleView);
-        DoneImageView = (ImageView)findViewById(R.id.Done_View);
-        DoneImageView2 = (ImageView)findViewById(R.id.Done_View2);
+        SelectedPhotoTextView = (TextView) findViewById(R.id.Text_View);
+        TitleTextView = (TextView) findViewById(R.id.TitleView);
+        DoneImageView = (ImageView) findViewById(R.id.Done_View);
+        DoneImageView2 = (ImageView) findViewById(R.id.Done_View2);
 
         DoneImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +196,13 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
+            case Define.PERMISSION_CAMERA:
+                if (grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    String saveDir = Environment.getExternalStoragePublicDirectory(
+                            Environment.DIRECTORY_DCIM + "/Camera").getAbsolutePath();
+                    cameraUtil.takePicture(PickerActivity.this, saveDir);
+                }
+                break;
             case Define.PERMISSION_STORAGE: {
                 if (grantResults.length > 0) {
                     if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -230,7 +240,8 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
                 pickerController.uploadPhotos(pickedImages);
             }
             return true;
-        } else */if (id == android.R.id.home)
+        } else */
+        if (id == android.R.id.home)
             pickerController.transImageFinish(pickedImages, position);
         return super.onOptionsItemSelected(item);
     }
@@ -238,13 +249,13 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
     public void showToolbarTitle() {
         if (getSupportActionBar() != null)
             TitleTextView.setText(album.bucketName);
-            //getSupportActionBar().setTitle(album.bucketName);
+        //getSupportActionBar().setTitle(album.bucketName);
 
     }
 
-    public void setBottomBarTitle(int total){
+    public void setBottomBarTitle(int total) {
         if (SelectedPhotoTextView != null) {
-            SelectedPhotoTextView.setText(String.valueOf(total) + "/" +Define.ALBUM_PICKER_COUNT);
+            SelectedPhotoTextView.setText(String.valueOf(total) + "/" + Define.ALBUM_PICKER_COUNT);
             /*if (Define.ALBUM_PICKER_COUNT == 1)
                 getSupportActionBar().setTitle(album.bucketName);
             else

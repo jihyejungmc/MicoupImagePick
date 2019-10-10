@@ -28,6 +28,7 @@ public class Define {
     public final static int CAMERA_REQUEST_CODE = 30;
     public final static int PERMISSION_STORAGE = 28;
     public final static int TRANS_IMAGES_RESULT_CODE = 29;
+    public final static int PERMISSION_CAMERA= 31;
 
     public static String INTENT_PATH = "intent_path";
     public static String INTENT_ADD_PATH = "intent_add_path";
