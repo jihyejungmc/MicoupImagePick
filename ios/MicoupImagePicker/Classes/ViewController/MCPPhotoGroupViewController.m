@@ -57,10 +57,11 @@
 - (void)setupLoadingView
 {
     UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.hidesWhenStopped = true;
     activityView.center = self.view.center;
     [activityView startAnimating];
     activityView.tag = 100;
-    [self.view addSubview:loadingView];
+    [self.view addSubview:activityView];
 }
 
 - (void)setupView
@@ -115,6 +116,7 @@
                         [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                     }
                 });
+                UIActivityIndicatorView * activityView = (UIActivityIndicatorView *)[self.view viewWithTag:100];
                 [activityView stopAnimating];
                 *stop = YES;
             }
