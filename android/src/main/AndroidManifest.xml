@@ -2,14 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.missycoupons">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera2" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application>
+        <activity
+            android:name=".fishbun.ui.camera.CameraActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
+            android:name=".fishbun.ui.album.AlbumActivity"
+            android:configChanges="orientation"
+            android:label="@string/album"
+            android:persistableMode="persistAcrossReboots"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <activity
+            android:name=".fishbun.ui.picker.PickerActivity"
+            android:configChanges="orientation"
+            android:persistableMode="persistAcrossReboots"
+            android:screenOrientation="portrait"
+            android:theme="@style/colorControlHighlight_theme" />
+        <activity
+            android:name=".fishbun.ui.editor.EditorActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/colorControlHighlight_theme" />
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -19,29 +38,17 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        <activity
-            android:name=".fishbun.ui.camera.CameraActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".fishbun.ui.album.AlbumActivity"
-            android:label="@string/album"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".fishbun.ui.picker.PickerActivity"
-            android:theme="@style/colorControlHighlight_theme"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".fishbun.ui.editor.EditorActivity"
-            android:theme="@style/colorControlHighlight_theme"
-            android:launchMode="singleTop"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
     </application>
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

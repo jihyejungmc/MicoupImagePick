@@ -28,8 +28,8 @@ public class UploadTask extends AsyncTask<String, Void, String> {
     private String url, fileuri, filepath;
     private int imageWidth, imageHeight;
 
-    private final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
-    private final MediaType MEDIA_TYPE_GIF = MediaType.parse("image/gif");
+    private final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png; charset=utf-8");
+    private final MediaType MEDIA_TYPE_GIF = MediaType.parse("image/gif; charset=utf-8");
 
     private MediaType contentType = MEDIA_TYPE_PNG;
 
