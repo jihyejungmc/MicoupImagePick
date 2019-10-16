@@ -12,6 +12,7 @@
     
     IBOutlet UITableView *_tableView;
     UIView *loadingView;
+    UIActivityIndicatorView *activityView;
 }
 
 @property (strong, nonatomic) NSString *boardId;
