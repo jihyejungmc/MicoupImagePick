@@ -63,9 +63,9 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         if (adapter != null) {
-            outState.putParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES, adapter.getPickedImagePath());
-            outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST, (ArrayList<? extends Parcelable>) adapter.getAlbumList());
-            outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST, (ArrayList<Uri>) adapter.getThumbList());
+//            outState.putParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES, adapter.getPickedImagePath());
+//            outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST, (ArrayList<? extends Parcelable>) adapter.getAlbumList());
+//            outState.putParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST, (ArrayList<Uri>) adapter.getThumbList());
             outState.putString("boardId", boardId);
             outState.putString("postNo", postNo);
             outState.putString("uploadUrl", uploadUrl);
@@ -79,18 +79,19 @@ public class AlbumActivity extends AppCompatActivity implements UploadController
         // Always call the superclass so it can restore the view hierarchy
         super.onRestoreInstanceState(outState);
         // Restore state members from saved instance
-        List<Album> albumList = outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST);
-        List<Uri> thumbList = outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST);
-        ArrayList<Uri> pickedImagePath = outState.getParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES);
+//        List<Album> albumList = outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_LIST);
+//        List<Uri> thumbList = new ArrayList<>(); // outState.getParcelableArrayList(Define.SAVE_INSTANCE_ALBUM_THUMB_LIST);
+//        ArrayList<Uri> pickedImagePath = outState.getParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES);
         boardId = outState.getString("boardId");
         postNo = outState.getString("postNo");
         uploadUrl = outState.getString("uploadUrl");
         cookie = outState.getString("cookie");
-
-        if (albumList != null && thumbList != null && pickedImagePath != null) {
-            adapter = new AlbumListAdapter(albumList, pickedImagePath, boardId, postNo, uploadUrl, cookie);
-            adapter.setThumbList(thumbList);
-        }
+        adapter = new AlbumListAdapter(albumList, new ArrayList<Uri>(), boardId, postNo, uploadUrl, cookie);
+        recyclerAlbumList.setAdapter(adapter);
+        adapter.notifyDataSetChanged();//        if (albumList != null && thumbList != null && pickedImagePath != null) {
+//            adapter = new AlbumListAdapter(albumList, pickedImagePath, boardId, postNo, uploadUrl, cookie);
+//            adapter.setThumbList(thumbList);
+//        }
     }
 
     @Override

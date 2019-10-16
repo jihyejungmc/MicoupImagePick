@@ -71,8 +71,8 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
     protected void onSaveInstanceState(Bundle outState) {
         try {
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES, pickedImages);
-            outState.putString(Define.SAVE_INSTANCE_SAVED_IMAGE, pickerController.getSavePath());
-            outState.putParcelableArray(Define.SAVE_INSTANCE_SAVED_IMAGE_THUMBNAILS, adapter.getImages());
+//            outState.putString(Define.SAVE_INSTANCE_SAVED_IMAGE, pickerController.getSavePath());
+//            outState.putParcelableArray(Define.SAVE_INSTANCE_SAVED_IMAGE_THUMBNAILS, adapter.getImages());
             outState.putParcelableArrayList(Define.SAVE_INSTANCE_NEW_IMAGES, pickerController.getAddImagePaths());
             outState.putString("boardId", boardId);
             outState.putString("postNo", postNo);
@@ -96,19 +96,19 @@ public class PickerActivity extends AppCompatActivity implements UploadControlle
             uploadUrl = outState.getString("uploadUrl");
             cookie = outState.getString("cookie");
             pickedImages = outState.getParcelableArrayList(Define.SAVE_INSTANCE_PICK_IMAGES);
-            ArrayList<Uri> addImages = outState.getParcelableArrayList(Define.SAVE_INSTANCE_NEW_IMAGES);
-            String savedImage = outState.getString(Define.SAVE_INSTANCE_SAVED_IMAGE);
+//            ArrayList<Uri> addImages = outState.getParcelableArrayList(Define.SAVE_INSTANCE_NEW_IMAGES);
+//            String savedImage = outState.getString(Define.SAVE_INSTANCE_SAVED_IMAGE);
             Image[] imageBeenList = (Image[]) outState.getParcelableArray(Define.SAVE_INSTANCE_SAVED_IMAGE_THUMBNAILS);
             adapter = new PickerGridAdapter(imageBeenList,
                     pickedImages,
                     pickerController,
                     pickerController.getPathDir(album.bucketId));
-            if (addImages != null) {
-                pickerController.setAddImagePaths(addImages);
-            }
-            if (savedImage != null) {
-                pickerController.setSavePath(savedImage);
-            }
+//            if (addImages != null) {
+//                pickerController.setAddImagePaths(addImages);
+//            }
+//            if (savedImage != null) {
+//                pickerController.setSavePath(savedImage);
+//            }
         } catch (Exception e) {
             Log.d(TAG, e.toString());
         }
