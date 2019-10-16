@@ -56,18 +56,25 @@
 
 - (void)setupLoadingView
 {
-    UIActivityIndicatorView *activityView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activityView.hidesWhenStopped = true;
+    loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+    loadingView.backgroundColor = [UIColor colorWithWhite:0. alpha:0.6];
+    loadingView.layer.cornerRadius = 5;
+    loadingView.center = self.view.center;
+    [self.view addSubview:loadingView];
+    
+    activityView= [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
     activityView.center = self.view.center;
+    [self.view addSubview:activityView];
     [activityView startAnimating];
     activityView.tag = 100;
-    [self.view addSubview:activityView];
 }
 
 - (void)setupView
 {
     [super setupView];
     [self setupLoadingView];
+    [loadingView setHidden:NO];
     if( [_groupArray count] < 1 ){
         [self loadAssetGroups];
     }
@@ -116,8 +123,8 @@
                         [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                     }
                 });
-                UIActivityIndicatorView * activityView = (UIActivityIndicatorView *)[self.view viewWithTag:100];
-                [activityView stopAnimating];
+                [loadingView setHidden:YES];
+                [activityView setHidden:YES];
                 *stop = YES;
             }
         }];
