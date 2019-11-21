@@ -38,7 +38,7 @@ public class UploadTask extends AsyncTask<String, Void, String> {
                       String fileuri, String filepath) {
         this.context = context;
         this.loadingView = loadingView;
-        this.client = new OkHttpClient();
+        this.client = CustomClientFactory.create();
         this.boardId = boardId;
         this.postNo = postNo;
         this.uploadUrl = uploadUrl;
@@ -106,7 +106,7 @@ public class UploadTask extends AsyncTask<String, Void, String> {
                 .post(requestBody)
                 .build();
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = CustomClientFactory.create();
         DebugLog("*UploadTask* doInBackground : request : " + request.toString());
         try {
             Response response = client.newCall(request).execute();
