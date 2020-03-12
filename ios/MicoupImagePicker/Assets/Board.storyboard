@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +10,7 @@
         <!--Photo Group View Controller-->
         <scene sceneID="MDn-8M-n5Q">
             <objects>
-                <viewController storyboardIdentifier="PhotoGroupViewController" automaticallyAdjustsScrollViewInsets="NO" id="TUR-5B-nDT" customClass="MCPPhotoGroupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoGroupViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="TUR-5B-nDT" customClass="MCPPhotoGroupViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4X-ld-lFt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rzh-E0-bSh" id="ODm-hP-UK5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a0A-Ki-DK1">
@@ -78,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-yH-baj">
-                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_close_x"/>
                                                 <connections>
@@ -137,7 +134,7 @@
         <!--Photo Select View Controller-->
         <scene sceneID="Fz5-lQ-c0L">
             <objects>
-                <viewController storyboardIdentifier="PhotoSelectViewController" id="qfd-aZ-1F9" customClass="MCPPhotoSelectViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoSelectViewController" modalPresentationStyle="fullScreen" id="qfd-aZ-1F9" customClass="MCPPhotoSelectViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EfG-i5-AwK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,7 +260,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SX-NV-G1o">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_back"/>
                                                 <connections>
@@ -329,7 +326,7 @@
         <!--Photo Edit View Controller-->
         <scene sceneID="uUB-rC-XWS">
             <objects>
-                <viewController storyboardIdentifier="PhotoEditViewController" id="Pc7-cs-s1t" customClass="MCPPhotoEditViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoEditViewController" modalPresentationStyle="fullScreen" id="Pc7-cs-s1t" customClass="MCPPhotoEditViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TCv-hS-cMz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -395,7 +392,7 @@
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvz-DC-PdR">
-                                        <rect key="frame" x="10" y="0.0" width="55" height="50"/>
+                                        <rect key="frame" x="10" y="0.0" width="90" height="50"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" image="ro_w"/>
                                         <connections>
@@ -403,7 +400,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xN4-Pe-il8">
-                                        <rect key="frame" x="349" y="0.0" width="55" height="50"/>
+                                        <rect key="frame" x="314" y="0.0" width="90" height="50"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" image="crop_w"/>
                                         <connections>
@@ -429,7 +426,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOM-Of-dpy">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_back"/>
                                                 <connections>
@@ -443,7 +440,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gw5-42-ujm">
-                                                <rect key="frame" x="364" y="0.0" width="50" height="44"/>
+                                                <rect key="frame" x="334" y="0.0" width="80" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_image_check"/>
                                                 <connections>
@@ -451,7 +448,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYB-b9-9mp">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
@@ -518,7 +515,7 @@
         <!--Photo Edit Result View Controller-->
         <scene sceneID="PiM-hH-8LZ">
             <objects>
-                <viewController storyboardIdentifier="PhotoEditResultViewController" id="syb-Qs-6lM" customClass="MCPPhotoEditResultViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoEditResultViewController" modalPresentationStyle="fullScreen" id="syb-Qs-6lM" customClass="MCPPhotoEditResultViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g2A-YP-Pl1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,7 +527,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6T-Z7-MOo">
-                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="44"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                 <state key="normal" image="btn_close_x"/>
                                                 <connections>
@@ -584,7 +581,7 @@
         <!--Camera View Controller-->
         <scene sceneID="pwj-dP-fyD">
             <objects>
-                <viewController storyboardIdentifier="CameraViewController" id="vzC-GZ-ezB" customClass="MCPCameraViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" modalPresentationStyle="fullScreen" id="vzC-GZ-ezB" customClass="MCPCameraViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2LW-bT-0PM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
