@@ -88,13 +88,14 @@ RCT_EXPORT_METHOD(openCameraWithOptions:(NSDictionary *)options
     if (imageUploadURL) {
         [HTTPAPICommunicator sharedInstance].imageUploadURL = imageUploadURL;
     }
-  
+
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     navigationController.navigationBarHidden = YES;
-  
+
     UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     [rootViewController presentViewController:navigationController animated:YES completion:nil];
-  
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageUploadSuccessNotificationHandler:) name:NotifyImageUploadSuccess object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imageUploadFailNotificationHandler:) name:NotifyImageUploadFail object:nil];
 }
@@ -138,6 +139,7 @@ RCT_EXPORT_METHOD(openCameraWithOptions:(NSDictionary *)options
     }
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     navigationController.navigationBarHidden = YES;
 
     UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
