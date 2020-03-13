@@ -65,6 +65,7 @@
   editVC.documentNo = self.documentNo;
   UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
   UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:editVC];
+  navCtrl.modalPresentationStyle = UIModalPresentationFullScreen;
   navCtrl.navigationBarHidden = YES;
   [picker dismissViewControllerAnimated:NO completion:^{
     [self dismissViewControllerAnimated:NO completion:^{
