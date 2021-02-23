@@ -215,10 +215,12 @@ public class EditorActivity extends FragmentActivity {
             Log.i(TAG, str);
     }
 
+/*
     @Override
     protected void attachBaseContext(Context newBase) {
         //TypeKit를 적용한 BaseContext로 변경합니다.
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
+*/
 
 }
